@@ -1,0 +1,8 @@
+@font-face {
+    font-family: FFVIII;
+    src: url(../fonts/OPTIEngeEtienne.woff2);
+}
+
+* {
+    font-family: FFVVI;
+}
