@@ -8,7 +8,7 @@ export class Carta {
     constructor(nombre, valores, imagen, elemento = null) {
         this.nombre = nombre;
         
-        // Valores numéricos para las comparaciones (A representa el 10)
+        // Valores numéricos para las comparaciones 
         this.valores = {
             norte: valores.norte,
             sur: valores.sur,
@@ -32,7 +32,6 @@ export class Carta {
 
     /**
      * Devuelve el valor de un lado específico. 
-     * Útil para manejar la 'A' como un 10 en los cálculos lógicos.
      * @param {string} lado - 'norte', 'sur', 'este' u 'oeste'.
      * @returns {number}
      */
