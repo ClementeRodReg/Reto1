@@ -1,0 +1,164 @@
+@font-face {
+    font-family: FFVIII;
+    src: url(../fonts/OPTIEngeEtienne.woff2);
+}
+
+* {
+   font-family: FFVIII;
+   color:#cccccc;
+}
+
+body {
+    background-color: #18193A;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;   
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* NUEVA CAPA INTRO: Actúa como el fondo oscuro y contenedor de la animación */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* Oscurece el juego de atrás */
+    z-index: 999; /* Por encima de todo */
+    pointer-events: none; /* No bloquea clics una vez oculta */
+    
+    /* Hace desaparecer la capa por completo al final del tiempo */
+    animation: destruirCapa 3.5s forwards;
+}
+
+header {
+    font-size: 110px; /* <--- El tamaño final que mantendrá tras la animación (la mitad de 110px) */
+    text-decoration: underline;
+    text-align: center;
+    z-index: 1000; 
+    
+    position: absolute;       
+    /*top: 10%;*/               
+    transform: translateX(-100vw); 
+    
+    /* Mantenemos tu misma animación */
+    animation: introFight 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* CONTENEDOR PRINCIPAL: Ahora está limpio y sin z-index problemáticos */
+.containerPrincipal {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; 
+    grid-template-rows: auto auto;     
+    gap: 30px;                         
+    width: 100%;
+    max-width: 1600px;                 
+    font-size: 26px;
+    letter-spacing: 3px;
+
+    /* ANIMACIÓN AÑADIDA: Sube el juego cuando el header se va */
+    animation: ajustarTablero 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* --- ANIMACIONES --- */
+
+@keyframes introFight {
+    0% { transform: translateX(-100vw); opacity: 0; font-size: 150px; top: 30%; }
+    28% { transform: translateX(5vw); opacity: 1; font-size: 150px; top: 30%; }
+    72% { transform: translateX(5vw); opacity: 1; font-size: 150px; top: 30%; }
+    100% { 
+        font-size: 110px;
+        transform: translateX(6vw); /* Se queda centrado */
+        opacity: 1;               /* Sigue siendo visible */
+        top:initial;
+    }
+}
+
+/* Animación que aclara el fondo y destruye la capa reduciendo sus dimensiones a 0 */
+@keyframes destruirCapa {
+    0% {
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100vw;
+        height: 100vh;
+    }
+    72% {
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100vw;
+        height: 100vh;
+    }
+    99% {
+        background-color: rgba(0, 0, 0, 0);
+        width: 100vw;
+        height: 100vh;
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+        width: 0;
+        height: 0;
+        display: none; /* Elimina su renderizado */
+    }
+}
+
+@keyframes ajustarTablero {
+    0% {
+        margin-top: 180px; /* Se queda abajo manteniendo el espacio para el header grande */
+    }
+    72% {
+        margin-top: 180px; /* Sigue abajo mientras el texto está estático en el centro */
+    }
+    100% {
+        margin-top: 0px;  /* ¡SUBE! Reduce el hueco drásticamente justo cuando el texto desaparece */
+    }
+}
+
+/* Contenedor de la letra: debe ser relative para que el GIF se alinee con ella */
+.i-animada {
+    position: relative;
+    display: inline-block;
+}
+
+/* El GIF animado que hará de punto */
+.i-animada::after {
+    content: "";
+    position: absolute;
+    width: 45px;  
+    height: 45px;
+    background-image: url('../img/crystal-spinning.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 20px;  
+    left: 49%;
+    transform: translateX(-55%);
+}
+
+/* Secciones del Grid */
+.containerPrincipal > div:nth-child(1) { grid-column: 1; justify-self: start; }
+.containerPrincipal > div:nth-child(2) { grid-column: 3; justify-self: end; }
+.containerPrincipal > div:nth-child(3) { grid-column: 2; grid-row: 1; justify-self: center; }
+.historialContainer { grid-column: 1 / span 3; grid-row: 2; text-align: center; }
+
+/* --- ESTILOS DE PRUEBA --- */
+.tableroGrid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 150px); 
+    grid-template-rows: repeat(3, 150px); 
+    gap: 5px;
+    background-image: url('../img/ifrit-fenix.png');
+    background-size: cover;       /* Hace que la imagen cubra todo el espacio del tablero */
+    background-position: center;  /* Centra el dibujo de los Eikons en la cuadrícula */
+    background-repeat: no-repeat; /* Evita que la imagen se duplique si el tablero cambia de tamaño */
+
+}
+.tableroGrid div { 
+    /* Bordes de las casillas un poco más suaves */ 
+    border: 1px solid rgba(204, 204, 204, 0.4);
+    background-color: rgba(24, 25, 58, 0.3);    /* Fondo sutilmente oscuro en cada casilla para resaltar las cartas que pongas encima */
+    box-sizing: border-box;
+}
+.tusCartas div, .susCartas div { width: 100px; height: 130px; border: 1px dashed #cccccc; margin-bottom: 10px; }
+h2{ text-align: center; }

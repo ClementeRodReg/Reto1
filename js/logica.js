@@ -1,1 +1,0 @@
-import { Carta } from './carta.js';

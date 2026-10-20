@@ -13,11 +13,30 @@ body{
     background-color: #18193A;
     display: flex;
     justify-content: center;
+
+    min-height: 100vh;   /* Opcional: asegura que el body ocupe toda la pantalla */
+    position: relative;  /* Sirve como referencia para la imagen absoluta */
 }
 
 header{
-    font-size: 100px;
+    font-size: 110px;
     text-decoration: underline;
+
+    position: relative;  /* Necesario para que el z-index funcione en el header */
+    z-index: 2;          /* Capa superior */
+}
+
+.angel{
+    height: 90%;
+    width: 90%;
+
+    position: absolute;  /* Saca la imagen del flujo y la posiciona sobre el body */
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%); /* Centra la imagen perfectamente en la pantalla */
+    object-fit: contain; /* Evita que la imagen se deforme si cambia el tamaño */
+    z-index: 1;          /* Capa inferior, por detrás del header */
+    opacity: 0.7;        /* Opcional: reduce la opacidad si tapa mucho el texto */
 }
 
 /* Contenedor de la letra: debe ser relative para que el GIF se alinee con ella */
