@@ -5,7 +5,8 @@
 
 
 * {
-   font-family: FFVIII; 
+   font-family: FFVIII;
+   color:#cccccc;
 }
 
 body{
@@ -40,7 +41,7 @@ header{
     background-repeat: no-repeat;
     
     /* Posicionamiento: lo subimos por encima de la letra */
-    top: 10px;  /* Ajustar este valor según el tamaño de la fuente */
+    top: 5px;  /* Ajustar este valor según el tamaño de la fuente */
     left: 50%;
     transform: translateX(-50%);
 }
