@@ -1,12 +1,10 @@
 export class Carta {
     /**
-     * @param {string} nombre - Nombre del personaje o monstruo (Ej: "Squall", "Chocobo").
      * @param {Object} valores - Objeto con los 4 números de la carta { norte, sur, este, oeste }.
      * @param {string} imagen - Ruta de la imagen de fondo/ilustración.
      * @param {string|null} elemento - Elemento de la carta (Ej: "fuego", "tierra", o null si no tiene).
      */
-    constructor(nombre, valores, imagen, elemento = null) {
-        this.nombre = nombre;
+    constructor(valores, imagen, elemento = null) {
         
         // Valores numéricos para las comparaciones 
         this.valores = {

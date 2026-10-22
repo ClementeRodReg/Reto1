@@ -1,0 +1,992 @@
+{
+    "card_1": {
+        "nombre": "Geezard",
+        "valores": {
+            "arriba": "1",
+            "izquierda": "5",
+            "abajo": "1",
+            "derecha": "4"
+        }
+    },
+    "card_2": {
+        "nombre": "Funguar",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "3",
+            "abajo": "1",
+            "derecha": "1"
+        }
+    },
+    "card_3": {
+        "nombre": "Bite Bug",
+        "valores": {
+            "arriba": "1",
+            "izquierda": "5",
+            "abajo": "3",
+            "derecha": "3"
+        }
+    },
+    "card_4": {
+        "nombre": "Red Bat",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "2",
+            "abajo": "1",
+            "derecha": "1"
+        }
+    },
+    "card_5": {
+        "nombre": "Blobra",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "5",
+            "abajo": "1",
+            "derecha": "3"
+        }
+    },
+    "card_6": {
+        "nombre": "Gayla",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "4",
+            "abajo": "4",
+            "derecha": "1"
+        }
+    },
+    "card_7": {
+        "nombre": "Gesper",
+        "valores": {
+            "arriba": "1",
+            "izquierda": "1",
+            "abajo": "4",
+            "derecha": "5"
+        }
+    },
+    "card_8": {
+        "nombre": "Fastitocalon-F",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "1",
+            "abajo": "2",
+            "derecha": "5"
+        }
+    },
+    "card_9": {
+        "nombre": "Blood Soul",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "1",
+            "abajo": "6",
+            "derecha": "1"
+        }
+    },
+    "card_10": {
+        "nombre": "Caterchipillar",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "3",
+            "abajo": "4",
+            "derecha": "2"
+        }
+    },
+    "card_11": {
+        "nombre": "Cockatrice",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "6",
+            "abajo": "2",
+            "derecha": "1"
+        }
+    },
+    "card_12": {
+        "nombre": "Grat",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "1",
+            "abajo": "3",
+            "derecha": "1"
+        }
+    },
+    "card_13": {
+        "nombre": "Buel",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "3",
+            "abajo": "2",
+            "derecha": "2"
+        }
+    },
+    "card_14": {
+        "nombre": "Mesmerize",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "4",
+            "abajo": "3",
+            "derecha": "3"
+        }
+    },
+    "card_15": {
+        "nombre": "Glacial Eye",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "3",
+            "abajo": "4",
+            "derecha": "1"
+        }
+    },
+    "card_16": {
+        "nombre": "Belhelmel",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "3",
+            "abajo": "5",
+            "derecha": "4"
+        }
+    },
+    "card_17": {
+        "nombre": "Thrustaevis",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "5",
+            "abajo": "2",
+            "derecha": "3"
+        }
+    },
+    "card_18": {
+        "nombre": "Anacondaur",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "5",
+            "abajo": "3",
+            "derecha": "1"
+        }
+    },
+    "card_19": {
+        "nombre": "Creeps",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "2",
+            "abajo": "5",
+            "derecha": "2"
+        }
+    },
+    "card_20": {
+        "nombre": "Grendel",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "2",
+            "abajo": "5",
+            "derecha": "4"
+        }
+    },
+    "card_21": {
+        "nombre": "Jelleye",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "7",
+            "abajo": "1",
+            "derecha": "2"
+        }
+    },
+    "card_22": {
+        "nombre": "Grand Mantis",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "3",
+            "abajo": "5",
+            "derecha": "2"
+        }
+    },
+    "card_23": {
+        "nombre": "Forbidden",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "2",
+            "abajo": "3",
+            "derecha": "6"
+        }
+    },
+    "card_24": {
+        "nombre": "Armadodo",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "6",
+            "abajo": "1",
+            "derecha": "3"
+        }
+    },
+    "card_25": {
+        "nombre": "Tri-Face",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "5",
+            "abajo": "5",
+            "derecha": "5"
+        }
+    },
+    "card_26": {
+        "nombre": "Fastitocalon",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "3",
+            "abajo": "1",
+            "derecha": "5"
+        }
+    },
+    "card_27": {
+        "nombre": "Snow Lion",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "3",
+            "abajo": "5",
+            "derecha": "1"
+        }
+    },
+    "card_28": {
+        "nombre": "Ochu",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "3",
+            "abajo": "3",
+            "derecha": "6"
+        }
+    },
+    "card_29": {
+        "nombre": "SAM08G",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "4",
+            "abajo": "2",
+            "derecha": "6"
+        }
+    },
+    "card_30": {
+        "nombre": "Death Claw",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "2",
+            "abajo": "7",
+            "derecha": "4"
+        }
+    },
+    "card_31": {
+        "nombre": "Cactuar",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "3",
+            "abajo": "6",
+            "derecha": "2"
+        }
+    },
+    "card_32": {
+        "nombre": "Tonberry",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "4",
+            "abajo": "4",
+            "derecha": "6"
+        }
+    },
+    "card_33": {
+        "nombre": "Abyss Worm",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "5",
+            "abajo": "3",
+            "derecha": "2"
+        }
+    },
+    "card_34": {
+        "nombre": "Turtapod",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "7",
+            "abajo": "6",
+            "derecha": "3"
+        }
+    },
+    "card_35": {
+        "nombre": "Vysage",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "5",
+            "abajo": "4",
+            "derecha": "5"
+        }
+    },
+    "card_36": {
+        "nombre": "T-Rexaur",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "7",
+            "abajo": "2",
+            "derecha": "6"
+        }
+    },
+    "card_37": {
+        "nombre": "Bomb",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "3",
+            "abajo": "6",
+            "derecha": "7"
+        }
+    },
+    "card_38": {
+        "nombre": "Blitz",
+        "valores": {
+            "arriba": "1",
+            "izquierda": "7",
+            "abajo": "4",
+            "derecha": "6"
+        }
+    },
+    "card_39": {
+        "nombre": "Wendigo",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "6",
+            "abajo": "1",
+            "derecha": "3"
+        }
+    },
+    "card_40": {
+        "nombre": "Torama",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "4",
+            "abajo": "4",
+            "derecha": "4"
+        }
+    },
+    "card_41": {
+        "nombre": "Imp",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "6",
+            "abajo": "3",
+            "derecha": "7"
+        }
+    },
+    "card_42": {
+        "nombre": "Blue Dragon",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "3",
+            "abajo": "7",
+            "derecha": "2"
+        }
+    },
+    "card_43": {
+        "nombre": "Adamantoise",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "6",
+            "abajo": "5",
+            "derecha": "5"
+        }
+    },
+    "card_44": {
+        "nombre": "Hexadragon",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "3",
+            "abajo": "4",
+            "derecha": "5"
+        }
+    },
+    "card_45": {
+        "nombre": "Iron Giant",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "5",
+            "abajo": "6",
+            "derecha": "5"
+        }
+    },
+    "card_46": {
+        "nombre": "Behemoth",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "7",
+            "abajo": "5",
+            "derecha": "6"
+        }
+    },
+    "card_47": {
+        "nombre": "Chimera",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "3",
+            "abajo": "5",
+            "derecha": "6"
+        }
+    },
+    "card_48": {
+        "nombre": "PuPu",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "1",
+            "abajo": "2",
+            "derecha": "10"
+        }
+    },
+    "card_49": {
+        "nombre": "Elastoid",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "7",
+            "abajo": "6",
+            "derecha": "2"
+        }
+    },
+    "card_50": {
+        "nombre": "GIM47N",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "4",
+            "abajo": "7",
+            "derecha": "5"
+        }
+    },
+    "card_51": {
+        "nombre": "Malboro",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "2",
+            "abajo": "4",
+            "derecha": "7"
+        }
+    },
+    "card_52": {
+        "nombre": "Ruby Dragon",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "4",
+            "abajo": "7",
+            "derecha": "2"
+        }
+    },
+    "card_53": {
+        "nombre": "Elnoyle",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "6",
+            "abajo": "7",
+            "derecha": "3"
+        }
+    },
+    "card_54": {
+        "nombre": "Tonberry King",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "4",
+            "abajo": "7",
+            "derecha": "6"
+        }
+    },
+    "card_55": {
+        "nombre": "Wedge, Biggs",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "7",
+            "abajo": "2",
+            "derecha": "6"
+        }
+    },
+    "card_56": {
+        "nombre": "Fujin Raijin",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "4",
+            "abajo": "8",
+            "derecha": "8"
+        }
+    },
+    "card_57": {
+        "nombre": "Elvoret",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "4",
+            "abajo": "3",
+            "derecha": "8"
+        }
+    },
+    "card_58": {
+        "nombre": "X-ATM092",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "3",
+            "abajo": "7",
+            "derecha": "8"
+        }
+    },
+    "card_59": {
+        "nombre": "Granaldo",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "5",
+            "abajo": "8",
+            "derecha": "2"
+        }
+    },
+    "card_60": {
+        "nombre": "Gerogero",
+        "valores": {
+            "arriba": "1",
+            "izquierda": "3",
+            "abajo": "8",
+            "derecha": "8"
+        }
+    },
+    "card_61": {
+        "nombre": "Iguion",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "2",
+            "abajo": "8",
+            "derecha": "2"
+        }
+    },
+    "card_62": {
+        "nombre": "Abadon",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "5",
+            "abajo": "4",
+            "derecha": "8"
+        }
+    },
+    "card_63": {
+        "nombre": "Trauma",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "6",
+            "abajo": "5",
+            "derecha": "8"
+        }
+    },
+    "card_64": {
+        "nombre": "Oilboyle",
+        "valores": {
+            "arriba": "1",
+            "izquierda": "8",
+            "abajo": "4",
+            "derecha": "8"
+        }
+    },
+    "card_65": {
+        "nombre": "Shumi",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "4",
+            "abajo": "8",
+            "derecha": "5"
+        }
+    },
+    "card_66": {
+        "nombre": "Krysta",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "1",
+            "abajo": "8",
+            "derecha": "5"
+        }
+    },
+    "card_67": {
+        "nombre": "Propagator",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "8",
+            "abajo": "4",
+            "derecha": "4"
+        }
+    },
+    "card_68": {
+        "nombre": "Jumbo Cactuar",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "4",
+            "abajo": "4",
+            "derecha": "8"
+        }
+    },
+    "card_69": {
+        "nombre": "Tri-Point",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "8",
+            "abajo": "2",
+            "derecha": "5"
+        }
+    },
+    "card_70": {
+        "nombre": "Gargantua",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "8",
+            "abajo": "6",
+            "derecha": "6"
+        }
+    },
+    "card_71": {
+        "nombre": "Mobile Type 8",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "3",
+            "abajo": "7",
+            "derecha": "6"
+        }
+    },
+    "card_72": {
+        "nombre": "Sphinxara",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "8",
+            "abajo": "5",
+            "derecha": "3"
+        }
+    },
+    "card_73": {
+        "nombre": "Tiamat",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "4",
+            "abajo": "5",
+            "derecha": "8"
+        }
+    },
+    "card_74": {
+        "nombre": "BGH251F2",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "5",
+            "abajo": "8",
+            "derecha": "7"
+        }
+    },
+    "card_75": {
+        "nombre": "Red Giant",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "7",
+            "abajo": "4",
+            "derecha": "8"
+        }
+    },
+    "card_76": {
+        "nombre": "Catoblepas",
+        "valores": {
+            "arriba": "1",
+            "izquierda": "7",
+            "abajo": "7",
+            "derecha": "8"
+        }
+    },
+    "card_77": {
+        "nombre": "Ultima Weapon",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "8",
+            "abajo": "2",
+            "derecha": "7"
+        }
+    },
+    "card_78": {
+        "nombre": "Chubby Chocobo",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "9",
+            "abajo": "8",
+            "derecha": "4"
+        }
+    },
+    "card_79": {
+        "nombre": "Angelo",
+        "valores": {
+            "arriba": "9",
+            "izquierda": "3",
+            "abajo": "7",
+            "derecha": "6"
+        }
+    },
+    "card_80": {
+        "nombre": "Gilgamesh",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "6",
+            "abajo": "9",
+            "derecha": "7"
+        }
+    },
+    "card_81": {
+        "nombre": "MiniMog",
+        "valores": {
+            "arriba": "9",
+            "izquierda": "2",
+            "abajo": "9",
+            "derecha": "3"
+        }
+    },
+    "card_82": {
+        "nombre": "Chicobo",
+        "valores": {
+            "arriba": "9",
+            "izquierda": "4",
+            "abajo": "8",
+            "derecha": "4"
+        }
+    },
+    "card_83": {
+        "nombre": "Quezacotl",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "4",
+            "abajo": "9",
+            "derecha": "9"
+        }
+    },
+    "card_84": {
+        "nombre": "Shiva",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "9",
+            "abajo": "4",
+            "derecha": "7"
+        }
+    },
+    "card_85": {
+        "nombre": "Ifrit",
+        "valores": {
+            "arriba": "9",
+            "izquierda": "8",
+            "abajo": "2",
+            "derecha": "6"
+        }
+    },
+    "card_86": {
+        "nombre": "Siren",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "2",
+            "abajo": "6",
+            "derecha": "9"
+        }
+    },
+    "card_87": {
+        "nombre": "Sacred",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "9",
+            "abajo": "9",
+            "derecha": "1"
+        }
+    },
+    "card_88": {
+        "nombre": "Minotaur",
+        "valores": {
+            "arriba": "9",
+            "izquierda": "9",
+            "abajo": "2",
+            "derecha": "5"
+        }
+    },
+    "card_89": {
+        "nombre": "Carbuncle",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "4",
+            "abajo": "10",
+            "derecha": "4"
+        }
+    },
+    "card_90": {
+        "nombre": "Diablos",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "3",
+            "abajo": "8",
+            "derecha": "10"
+        }
+    },
+    "card_91": {
+        "nombre": "Leviathan",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "7",
+            "abajo": "1",
+            "derecha": "10"
+        }
+    },
+    "card_92": {
+        "nombre": "Odin",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "5",
+            "abajo": "3",
+            "derecha": "10"
+        }
+    },
+    "card_93": {
+        "nombre": "Pandemona",
+        "valores": {
+            "arriba": "10",
+            "izquierda": "7",
+            "abajo": "7",
+            "derecha": "1"
+        }
+    },
+    "card_94": {
+        "nombre": "Cerberus",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "10",
+            "abajo": "6",
+            "derecha": "4"
+        }
+    },
+    "card_95": {
+        "nombre": "Alexander",
+        "valores": {
+            "arriba": "9",
+            "izquierda": "2",
+            "abajo": "4",
+            "derecha": "10"
+        }
+    },
+    "card_96": {
+        "nombre": "Phoenix",
+        "valores": {
+            "arriba": "7",
+            "izquierda": "10",
+            "abajo": "7",
+            "derecha": "2"
+        }
+    },
+    "card_97": {
+        "nombre": "Bahamut",
+        "valores": {
+            "arriba": "10",
+            "izquierda": "6",
+            "abajo": "2",
+            "derecha": "8"
+        }
+    },
+    "card_98": {
+        "nombre": "Doomtrain",
+        "valores": {
+            "arriba": "3",
+            "izquierda": "10",
+            "abajo": "10",
+            "derecha": "1"
+        }
+    },
+    "card_99": {
+        "nombre": "Eden",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "10",
+            "abajo": "9",
+            "derecha": "4"
+        }
+    },
+    "card_100": {
+        "nombre": "Ward",
+        "valores": {
+            "arriba": "10",
+            "izquierda": "8",
+            "abajo": "2",
+            "derecha": "7"
+        }
+    },
+    "card_101": {
+        "nombre": "Kiros",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "10",
+            "abajo": "6",
+            "derecha": "7"
+        }
+    },
+    "card_102": {
+        "nombre": "Laguna",
+        "valores": {
+            "arriba": "5",
+            "izquierda": "9",
+            "abajo": "3",
+            "derecha": "10"
+        }
+    },
+    "card_103": {
+        "nombre": "Selphie",
+        "valores": {
+            "arriba": "10",
+            "izquierda": "4",
+            "abajo": "6",
+            "derecha": "8"
+        }
+    },
+    "card_104": {
+        "nombre": "Quistis",
+        "valores": {
+            "arriba": "9",
+            "izquierda": "2",
+            "abajo": "10",
+            "derecha": "6"
+        }
+    },
+    "card_105": {
+        "nombre": "Irvine",
+        "valores": {
+            "arriba": "2",
+            "izquierda": "10",
+            "abajo": "9",
+            "derecha": "6"
+        }
+    },
+    "card_106": {
+        "nombre": "Zell",
+        "valores": {
+            "arriba": "8",
+            "izquierda": "6",
+            "abajo": "10",
+            "derecha": "5"
+        }
+    },
+    "card_107": {
+        "nombre": "Rinoa",
+        "valores": {
+            "arriba": "4",
+            "izquierda": "10",
+            "abajo": "2",
+            "derecha": "10"
+        }
+    },
+    "card_108": {
+        "nombre": "Edea",
+        "valores": {
+            "arriba": "10",
+            "izquierda": "3",
+            "abajo": "3",
+            "derecha": "10"
+        }
+    },
+    "card_109": {
+        "nombre": "Seifer",
+        "valores": {
+            "arriba": "6",
+            "izquierda": "4",
+            "abajo": "10",
+            "derecha": "9"
+        }
+    },
+    "card_110": {
+        "nombre": "Squall",
+        "valores": {
+            "arriba": "10",
+            "izquierda": "9",
+            "abajo": "6",
+            "derecha": "4"
+        }
+    }
+}

@@ -37,18 +37,39 @@ body {
 }
 
 header {
-    font-size: 110px; /* <--- El tamaño final que mantendrá tras la animación (la mitad de 110px) */
+    font-size: 150px; /* <--- Empezamos con el tamaño grande de la intro */
     text-decoration: underline;
     text-align: center;
     z-index: 1000; 
     
-    position: absolute;       
-    /*top: 10%;*/               
-    transform: translateX(-100vw); 
+    position: fixed; /* Cambiado a fixed para que se centre respecto a la pantalla completa */
+    top: 50%;        /* Centrado vertical perfecto */
+    left: 50%;       /* Centrado horizontal perfecto */
+    transform: translate(-50%, -50%); /* Ajuste del eje central */
+    width: max-content; /* Evita saltos de línea indeseados */
     
-    /* Mantenemos tu misma animación */
+    /* Ejecutamos la animación de la intro general */
     animation: introFight 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
+
+header span {
+    display: inline-block;
+    opacity: 0; /* Empiezan invisibles */
+    transform: scale(0.5); /* Nacen más pequeñas para dar un golpe de zoom */
+    animation: aparecerLetraFight 0.15s ease-out forwards; 
+}
+
+/* 
+   Retrasos secuenciales rápidos.
+   Aparecen en ráfaga (separadas por 50ms) al arrancar el juego.
+*/
+header span:nth-child(1) { animation-delay: 0.2s; } /* F */
+header span:nth-child(2) { animation-delay: 0.25s; } /* Espacio */
+header span:nth-child(3) { animation-delay: 0.3s; } /* ı (con cristal) */
+header span:nth-child(4) { animation-delay: 0.35s; } /* g */
+header span:nth-child(5) { animation-delay: 0.4s; } /* h */
+header span:nth-child(6) { animation-delay: 0.45s; } /* t */
+header span:nth-child(7) { animation-delay: 0.5s; } /* ! */
 
 /* CONTENEDOR PRINCIPAL: Ahora está limpio y sin z-index problemáticos */
 .containerPrincipal {
@@ -68,14 +89,39 @@ header {
 /* --- ANIMACIONES --- */
 
 @keyframes introFight {
-    0% { transform: translateX(-100vw); opacity: 0; font-size: 150px; top: 30%; }
-    28% { transform: translateX(5vw); opacity: 1; font-size: 150px; top: 30%; }
-    72% { transform: translateX(5vw); opacity: 1; font-size: 150px; top: 30%; }
+    0% {  
+        opacity: 0; 
+        font-size: 150px; 
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    28% { 
+        opacity: 1; 
+        font-size: 150px; 
+        transform: translate(-50%, -50%) scale(1);
+    }
+    72% { 
+        opacity: 1; 
+        font-size: 150px; 
+        transform: translate(-50%, -50%) scale(1);
+        visibility: visible;
+    }
+    99% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5); /* Se encoge un poco antes de borrarse */
+        visibility: visible;
+    }
     100% { 
         font-size: 110px;
-        transform: translateX(6vw); /* Se queda centrado */
-        opacity: 1;               /* Sigue siendo visible */
-        top:initial;
+        opacity: 0;              /* Se vuelve completamente invisible */
+        visibility: hidden;      /* Se borra del renderizado del navegador para que no interfiera */
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+@keyframes aparecerLetraFight {
+    to {
+        opacity: 1;
+        transform: scale(1); /* Vuelven a su tamaño real de 110px */
     }
 }
 
@@ -104,17 +150,9 @@ header {
     }
 }
 
-@keyframes ajustarTablero {
-    0% {
-        margin-top: 180px; /* Se queda abajo manteniendo el espacio para el header grande */
-    }
-    72% {
-        margin-top: 180px; /* Sigue abajo mientras el texto está estático en el centro */
-    }
-    100% {
-        margin-top: 0px;  /* ¡SUBE! Reduce el hueco drásticamente justo cuando el texto desaparece */
-    }
-}
+
+
+/* --- ANIMACIONES FIN --- */
 
 /* Contenedor de la letra: debe ser relative para que el GIF se alinee con ella */
 .i-animada {
@@ -160,5 +198,81 @@ header {
     background-color: rgba(24, 25, 58, 0.3);    /* Fondo sutilmente oscuro en cada casilla para resaltar las cartas que pongas encima */
     box-sizing: border-box;
 }
-.tusCartas div, .susCartas div { width: 100px; height: 130px; border: 1px dashed #cccccc; margin-bottom: 10px; }
+
 h2{ text-align: center; }
+
+.tusCartas div, .susCartas div {
+    position: relative; 
+    width: 100px; 
+    height: 130px; 
+    box-sizing: border-box;
+    border: 1px dashed #cccccc; 
+    margin-bottom: 10px; /* Separación vertical entre tus cartas */
+
+    /* --- NUEVAS PROPIEDADES PARA CENTRAR LAS IMÁGENES --- */
+    background-size: contain;     /* Ajusta la carta por completo dentro del recuadro sin cortarla */
+    background-position: center;  /* Centra la carta horizontal y verticalmente */
+    background-repeat: no-repeat; /* Evita que la carta o el fondo azul/rojo se dupliquen */
+}
+
+/* Regla separada para el tablero para que NO herede los 100x130px y mantenga su tamaño correcto */
+.tableroGrid div {
+    position: relative;
+    box-sizing: border-box;
+    /* Las dimensiones de las casillas ya las maneja el grid-template del tablero (150x150px) */
+    
+    /* Preparamos las propiedades de fondo para cuando se coloque una carta en el tablero */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- CONTENEDOR DE VALORES (CRUZ TRIPLE TRIAD) --- */
+.valores-carta {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 35px;
+    height: 35px;
+    display: grid;
+    /* Creamos una cuadrícula de 3x3 para posicionar la cruz */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    font-family: FFVIII;
+    font-size: 24px; /* Ajusta el tamaño si los números se ven muy grandes o pequeños */
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #000000, -1px -1px 2px #000000; /* Borde negro para que se lea sobre cualquier fondo */
+    line-height: 1;
+    pointer-events: none; /* Evita que los números interfieran con los clics */
+}
+
+/* Posicionamiento milimétrico de cada dirección dentro de la cuadrícula 3x3 */
+.val-norte { grid-column: 2; grid-row: 1; justify-self: center; align-self: start; }
+.val-oeste { grid-column: 1; grid-row: 2; justify-self: start;  align-self: center; }
+.val-este  { grid-column: 3; grid-row: 2; justify-self: end;    align-self: center; }
+.val-sur   { grid-column: 2; grid-row: 3; justify-self: center; align-self: end; }
+
+
+/* --- CONTENEDOR DEL MARCADOR --- */
+.puntuacion {
+    display: flex;
+    justify-content: space-between; /* Empuja un elemento a la izquierda del todo y el otro a la derecha */
+    align-items: center;
+    width: 100%;                  /* Ocupa todo el ancho disponible del bloque del tablero */
+    max-width: 460px;             /* Ajusta este valor al ancho exacto de tu .tableroGrid (3x150px + gaps) */
+    margin: 15px auto 0 auto;     /* Centra el marcador respecto al tablero y le da separación superior */
+    font-size: 64px;              /* Tamaño destacado para los números de puntuación */
+    /*font-weight: bold;*/
+}
+
+/* Puntuación del Jugador (Izquierda y Azul) */
+.tuPuntuacion {
+    color: #3a86ff;               /* Azul brillante estilo interfaz RPG */
+    text-shadow: 0 0 10px rgba(58, 134, 255, 0.5); /* Sutil brillo de energía */
+}
+
+/* Puntuación del Rival (Derecha y Rojo) */
+.suPuntuacion {
+    color: #ff006e;               /* Rojo/Rosa intenso de combate */
+    text-shadow: 0 0 10px rgba(255, 0, 110, 0.5);  /* Sutil brillo de energía */
+}
