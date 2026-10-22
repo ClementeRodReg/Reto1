@@ -6,7 +6,7 @@
 
 * {
    font-family: FFVIII;
-   color:#cccccc;
+   color:#d3d3d3;
 }
 
 body{
@@ -18,25 +18,144 @@ body{
     position: relative;  /* Sirve como referencia para la imagen absoluta */
 }
 
-header{
-    font-size: 110px;
-    text-decoration: underline;
-
-    position: relative;  /* Necesario para que el z-index funcione en el header */
-    z-index: 2;          /* Capa superior */
+.menu-principal {
+    position: relative; /* Actúa como base para posicionar los botones */
+    z-index: 2;         /* Mantiene todo el menú por encima del ángel */
+    display: inline-block; /* Se ajusta exactamente al ancho del texto */
+    margin-top: 50px;   /* Ajusta la distancia del título con el borde superior de la pantalla */
 }
 
-.angel{
-    height: 90%;
-    width: 90%;
+header {
+    font-size: 110px;
+    text-decoration: underline;
+    position: relative;
+}
 
-    position: absolute;  /* Saca la imagen del flujo y la posiciona sobre el body */
+.containerBotones {
+    position: absolute;
+    
+    /* Empuja los botones hacia abajo (pasando el título) y hacia la derecha */
+    top: 330px;       /* Ajusta este valor para subirlos o bajarlos */
+    right: 100px;     /* Ajusta este valor para moverlos más a la derecha o izquierda */
+    
+    display: flex;
+    flex-direction: column; /* Coloca los botones uno debajo del otro estilo FF */
+    gap: 30px;              /* Separación entre los botones */
+}
+
+/* Estilo para que los botones parezcan de Final Fantasy */
+.containerBotones button {
+    background: rgba(0, 0, 0, 0.6); 
+    border: 2px solid #cccccc;
+    color: #cccccc;
+    font-family: FFVIII;
+    font-size: 24px;
+    padding: 8px 20px; /* Restaurado a un padding normal y simétrico */
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    outline: none; 
+
+    position: relative; /* Sigue siendo necesario para que la mano se guíe por este botón */
+    opacity: 0; 
+    animation: aparecerBoton 0.5s ease-out forwards;
+}
+
+/* Cuando el botón tiene el foco, la mano aparece FUERA a la izquierda */
+.containerBotones button:focus::before {
+    content: "";
+    position: absolute;
+    
+    /* Al usar un valor negativo, sacamos la mano por completo del borde izquierdo del botón */
+    left: -45px; /* Ajusta este valor si quieres alejarla más o acercarla al borde */
+    top: 50%;
+    
+    /* Configura el tamaño de tu imagen de la mano */
+    width: 35px;        
+    height: 20px;
+    
+    /* Ruta corregida con el nombre exacto de tu archivo */
+    background-image: url('../img/cursor.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Centrado vertical y animación de flotación */
+    animation: flotarMano 0.6s infinite alternate ease-in-out;
+}
+
+/* Cambiamos el comportamiento de hover para que también aplique el focus (retrocompatibilidad con ratón) */
+.containerBotones button:hover {
+    background: rgba(255, 255, 255, 0.1); /* Efecto sutil al pasar el ratón */
+}
+
+/* Nueva animación: Efecto de flotación horizontal (izquierda-derecha) clásico de FF */
+@keyframes flotarMano {
+    0% {
+        transform: translate(0, -50%); /* Posición inicial centrada verticalmente */
+    }
+    100% {
+        transform: translate(-6px, -50%); /* Se desplaza un poco a la izquierda simulando el apuntado */
+    }
+}
+
+/* 
+   Aplicamos retrasos de tiempo individuales utilizando :nth-child.
+   Como el ángel tarda 3s, el primer botón espera 3 segundos exactos.
+*/
+.containerBotones button:nth-child(1) {
+    animation-delay: 3s; /* Aparece justo cuando el ángel se detiene */
+}
+
+.containerBotones button:nth-child(2) {
+    animation-delay: 3.4s; /* Aparece 400 milisegundos después que el primero */
+}
+
+/* Definición de la animación para materializar los botones */
+@keyframes aparecerBoton {
+    0% {
+        opacity: 0;
+        transform: translateY(10px); /* Un sutil efecto de subida al materializarse */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Vuelve a su posición original */
+    }
+}
+
+
+.angel{
+    height: 92%;
+    width: 92%;
+
+    position: absolute;  
     top: 40%;
-    left: 40%;
-    transform: translate(-50%, -50%); /* Centra la imagen perfectamente en la pantalla */
-    object-fit: contain; /* Evita que la imagen se deforme si cambia el tamaño */
-    z-index: 1;          /* Capa inferior, por detrás del header */
-    opacity: 0.7;        /* Opcional: reduce la opacidad si tapa mucho el texto */
+    left: 50%;
+    object-fit: contain; 
+    z-index: 1;          
+    pointer-events: none;
+
+    /* 
+       Añadimos la animación:
+       - 'aparecerDesdeIzquierda': nombre del @keyframes.
+       - '1.5s': duración de la animación (ajústala a tu gusto).
+       - 'ease-out': hace que empiece rápido y frene suavemente al llegar.
+       - 'forwards': congela la animación en su estado final para que no desaparezca.
+    */
+    animation: aparecerDesdeIzquierda 3s ease-out forwards; 
+}
+
+/* Definición de la animación de Final Fantasy */
+@keyframes aparecerDesdeIzquierda {
+    0% {
+        /* Estado inicial: 100px más a la izquierda, completamente invisible y un pelín más pequeño */
+        transform: translate(-100%, -50%); 
+        opacity: 0;
+    }
+    100% {
+        /* Estado final: Tu posición original exacta y la opacidad que querías */
+        transform: translate(-50%, -50%); 
+        opacity: 0.7;
+    }
 }
 
 /* Contenedor de la letra: debe ser relative para que el GIF se alinee con ella */
@@ -60,7 +179,7 @@ header{
     background-repeat: no-repeat;
     
     /* Posicionamiento: lo subimos por encima de la letra */
-    top: 5px;  /* Ajustar este valor según el tamaño de la fuente */
+    top: 20px;  /* Ajustar este valor según el tamaño de la fuente */
     left: 50%;
     transform: translateX(-50%);
 }
