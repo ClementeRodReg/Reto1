@@ -13,12 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Luego se inserta ese HTML dentro del elemento que tenga id="header"
         .then(html => document.getElementById("header").innerHTML = html)
 
-        .then(() =>{
-            if(sessionStorage.getItem("intentos") == null){
-                sessionStorage.setItem("intentos", 0);
-            }
-            document.getElementById("intentos").innerHTML = "Intentos: " + sessionStorage.getItem("intentos");
-        })
 
 
 
@@ -33,3 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // (No hay personalización en el footer, solo se inserta el contenido)
 });
+function cerrarLogin() {
+    document.getElementById('contenedorPadre').style.display = 'none';
+}
+function abrirLogin(){
+
+    document.getElementById('contenedorPadre').style.display = 'flex';
+}

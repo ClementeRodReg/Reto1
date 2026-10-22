@@ -7,8 +7,8 @@ document.getElementById("Registrarse").addEventListener("click", (event) => {
   ) {
     event.preventDefault();
 
-    let usuario = document.getElementById("usuario");
-    let Contraseña = document.getElementById("Contraseña");
+    let usuario = document.getElementById("usuario").value;
+    let Contraseña = document.getElementById("Contraseña").value;
 
     let Usuarios = JSON.parse(localStorage.getItem("Usuarios")) || {};
 

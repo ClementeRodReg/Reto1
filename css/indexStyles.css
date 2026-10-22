@@ -1,0 +1,10 @@
+*{
+margin: 0;
+padding: 0;
+font-family: FFVIII; 
+}
+
+@font-face {
+    font-family: FFVIII;
+    src: url(./fonts/OPTIEngeEtienne.woff2);
+}
