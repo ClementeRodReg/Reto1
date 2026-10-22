@@ -1,3 +1,5 @@
+import { mostrarVentanaNormas } from "./normas.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const botones = document.querySelectorAll(".containerBotones button");
     let indexActual = 0;
@@ -13,22 +15,42 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => {
         if (botones.length === 0) return;
 
+        // Comprobamos si hay alguna ventana de normas abierta para no interferir con las flechas
+        if (document.getElementById("modal-normas")) return;
+
         if (e.key === "ArrowDown") {
-            e.preventDefault(); // Evita el scroll de la página
-            indexActual = (indexActual + 1) % botones.length; // Cicla hacia abajo
+            e.preventDefault();
+            indexActual = (indexActual + 1) % botones.length;
             botones[indexActual].focus();
         } else if (e.key === "ArrowUp") {
             e.preventDefault();
-            indexActual = (indexActual - 1 + botones.length) % botones.length; // Cicla hacia arriba
+            indexActual = (indexActual - 1 + botones.length) % botones.length;
             botones[indexActual].focus();
+        } 
+        // Lógica para detectar el ENTER
+        else if (e.key === "Enter") {
+            const botonActivo = document.activeElement;
+            
+            // Si el botón enfocado actualmente es el de "Normas"
+            if (botonActivo && botonActivo.textContent === "Normas") {
+                e.preventDefault();
+                mostrarVentanaNormas(); // Ejecuta la función del otro archivo
+            }
         }
     });
 
-    // Opcional: Actualiza el índice si el usuario decide usar el ratón
+    // Actualiza el índice si el usuario decide usar el ratón
     botones.forEach((boton, index) => {
         boton.addEventListener("mouseenter", () => {
             boton.focus();
             indexActual = index;
+        });
+        
+        // También añadimos el evento click por si usan el ratón
+        boton.addEventListener("click", () => {
+            if (boton.textContent === "Normas") {
+                mostrarVentanaNormas();
+            }
         });
     });
 });
