@@ -34,3 +34,10 @@ function abrirLogin(){
 
     document.getElementById('contenedorPadre').style.display = 'flex';
 }
+function mostrarLogin(){
+  fetch('login.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('contenedor-login').innerHTML = html;
+    });
+}
