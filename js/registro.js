@@ -10,9 +10,9 @@ document.getElementById("Registrarse").addEventListener("click", (event) => {
     let usuario = document.getElementById("usuario").value;
     let Contraseña = document.getElementById("Contraseña").value;
 
-    let Usuarios = JSON.parse(localStorage.getItem("Usuarios")) || {};
+    let objetoUsuarios = JSON.parse(localStorage.getItem("Usuarios")) || {};
 
-    let datoUsuario = Usuarios[usuario];
+    let datoUsuario = objetoUsuarios[usuario];
 
     if (datoUsuario == null) {
       let objeto = {
@@ -20,9 +20,9 @@ document.getElementById("Registrarse").addEventListener("click", (event) => {
         contraseña: Contraseña,
       };
     
-    Usuarios[usuario] = objeto;
+    objetoUsuarios[usuario] = objeto;
 
-    localStorage.setItem("Usuarios", JSON.stringify(Usuarios));
+    localStorage.setItem("Usuarios", JSON.stringify(objetoUsuarios));
 
     sessionStorage.setItem("sesion", JSON.stringify(objeto));
     window.location = "./index.html";
