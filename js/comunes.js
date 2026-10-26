@@ -1,43 +1,59 @@
-// Espera a que todo el contenido del documento (HTML) se haya cargado completamente
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ===========================================================
-    //  CARGA DEL HEADER (encabezado)
-    // ===========================================================
-
-    // Se utiliza `fetch()` para obtener el contenido del archivo externo "header.html".
+    // CARGAR HEADER
     fetch("./header.html")
-        // Cuando se recibe la respuesta, se convierte a texto HTML
-        .then(r => r.text())
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById("header").innerHTML = html;
 
-        // Luego se inserta ese HTML dentro del elemento que tenga id="header"
-        .then(html => document.getElementById("header").innerHTML = html)
+            // Obtener la sesión guardada
+            const sesion = JSON.parse(
+                sessionStorage.getItem("sesion")
+            );
+
+            // Mostrar el nombre del usuario
+            const nombreUsuario =
+                document.getElementById("nombreUsuario");
+
+            if (nombreUsuario && sesion) {
+                nombreUsuario.textContent = sesion.usuario;
+            } else {
+                console.log("No se encontró el usuario o la sesión");
+            }
+        })
+        .catch(error => console.error("Error al cargar el header:", error));
 
 
-
-
-    // ===========================================================
-    //  CARGA DEL FOOTER (pie de página)
-    // ===========================================================
-
-    // Se hace lo mismo que con el header: cargar el contenido de Footer.html
+    // CARGAR FOOTER
     fetch("./Footer.html")
-        .then(r => r.text())
-        .then(html => document.getElementById("footer").innerHTML = html);
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById("footer").innerHTML = html;
+        })
+        .catch(error => console.error("Error al cargar el footer:", error));
 
-    // (No hay personalización en el footer, solo se inserta el contenido)
 });
-function cerrarLogin() {
-    document.getElementById('contenedorPadre').style.display = 'none';
-}
-function abrirLogin(){
 
-    document.getElementById('contenedorPadre').style.display = 'flex';
+
+// CERRAR LOGIN
+function cerrarLogin() {
+    document.getElementById("contenedorPadre").style.display = "none";
 }
-function mostrarLogin(){
-  fetch('login.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('contenedor-login').innerHTML = html;
-    });
+
+
+// ABRIR LOGIN
+function abrirLogin() {
+    document.getElementById("contenedorPadre").style.display = "flex";
+}
+
+
+// MOSTRAR LOGIN
+function mostrarLogin() {
+    fetch("login.html")
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById("contenedor-login").innerHTML = html;
+        })
+        .catch(error => console.error("Error al cargar el login:", error));
 }
