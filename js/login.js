@@ -7,9 +7,11 @@
     if (JSON.parse(localStorage.getItem("Ranking") == null)) {
         localStorage.setItem("Ranking", JSON.stringify({}));
     }
+
  
  });
  document.getElementById("acceder").addEventListener("click", (event) => {
+
 
         
         if (
@@ -44,6 +46,22 @@
                     // Si la contraseña no coincide
                     alert("Contraseña incorrecta");
                 }
+
+                            const sesion = JSON.parse(
+                sessionStorage.getItem("sesion")
+            );
+
+            // Mostrar el nombre del usuario
+            const nombreUsuario =
+                document.getElementById("nombreUsuario");
+
+            if (nombreUsuario && sesion) {
+                nombreUsuario.textContent = sesion.usuario;
+            } else {
+                console.log("No se encontró el usuario o la sesión");
+            }
+        
             }
         }
     });
+    
