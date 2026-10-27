@@ -150,6 +150,56 @@ header span:nth-child(7) { animation-delay: 0.5s; } /* ! */
     }
 }
 
+@keyframes aparecerCartel {
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes voltearCarta3D {
+    0% {
+        transform: rotateY(0deg) scale(1);
+    }
+    50% {
+        transform: rotateY(90deg) scale(1.05); /* A mitad de giro la carta está de perfil */
+    }
+    100% {
+        transform: rotateY(0deg) scale(1); /* Vuelve al frente con el nuevo color */
+    }
+}
+
+/* Keyframes: Efecto Brinco */
+@keyframes brincoLetra {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-15px); /* Eleva la letra */
+    }
+    60% {
+        transform: translateY(2px);   /* Sutil amortiguación al caer */
+    }
+}
+
+/* Keyframes: Pulsos de Brillo */
+@keyframes brilloPulsanteOro {
+    from {
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4);
+    }
+    to {
+        text-shadow: 0 0 25px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 180, 0, 0.7);
+    }
+}
+
+@keyframes brilloPulsanteRojo {
+    from {
+        text-shadow: 0 0 15px rgba(255, 0, 110, 0.8), 0 0 30px rgba(255, 0, 110, 0.4);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(255, 0, 110, 1), 0 0 60px rgba(255, 0, 0, 0.8);
+    }
+}
 /* --- ANIMACIONES FIN --- */
 
 /* Contenedor de la letra: debe ser relative para que el GIF se alinee con ella */
@@ -176,7 +226,6 @@ header span:nth-child(7) { animation-delay: 0.5s; } /* ! */
 .containerPrincipal > div:nth-child(1) { grid-column: 1; justify-self: start; }
 .containerPrincipal > div:nth-child(2) { grid-column: 3; justify-self: end; }
 .containerPrincipal > div:nth-child(3) { grid-column: 2; grid-row: 1; justify-self: center; }
-.historialContainer { grid-column: 1 / span 3; grid-row: 2; text-align: center; }
 
 /* --- ESTILOS DE PRUEBA --- */
 .tableroGrid { 
@@ -321,9 +370,39 @@ h2{
     text-shadow: 3px 3px 0px #000;
 }
 
-/* Colores temáticos para el resultado */
-.resultado-victoria { color: #ffd700; text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); } /* Dorado */
-.resultado-derrota { color: #ff006e; text-shadow: 0 0 15px rgba(255, 0, 110, 0.6); }  /* Rojo */
+/* Brillo dorado pulsante para el texto de Victoria */
+.resultado-victoria {
+    position: relative;
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4) !important;
+    animation: brilloPulsanteOro 2s ease-in-out infinite alternate;
+}
+
+/* Brillo rojo pulsante e intenso para el texto de Derrota */
+.resultado-derrota {
+    color: #ff006e;
+    text-shadow: 0 0 15px rgba(255, 0, 110, 0.8), 0 0 30px rgba(255, 0, 110, 0.4) !important;
+    animation: brilloPulsanteRojo 1.5s ease-in-out infinite alternate;
+}
+
+/* Letras de victoria individuales saltando */
+.resultado-victoria span {
+    display: inline-block;
+    animation: brincoLetra 1.2s ease-in-out infinite;
+}
+
+/* Retrasos secuenciales para las 9 letras de "VICTORIA" (separadas por 0.10s) */
+.resultado-victoria span:nth-child(1)  { animation-delay: 0.15s; }
+.resultado-victoria span:nth-child(2)  { animation-delay: 0.25s; }
+.resultado-victoria span:nth-child(3)  { animation-delay: 0.35s; }
+.resultado-victoria span:nth-child(4)  { animation-delay: 0.45s; }
+.resultado-victoria span:nth-child(5)  { animation-delay: 0.55s; }
+.resultado-victoria span:nth-child(6)  { animation-delay: 0.65s; }
+.resultado-victoria span:nth-child(7)  { animation-delay: 0.75s; }
+.resultado-victoria span:nth-child(8)  { animation-delay: 0.85s; }
+.resultado-victoria span:nth-child(9)  { animation-delay: 0.95s; }
+
+
 .resultado-empate { color: #d3d3d3; text-shadow: 0 0 15px rgba(211, 211, 211, 0.6); } /* Gris */
 
 .cartel-final p {
@@ -350,9 +429,17 @@ h2{
     transform: scale(1.05);
 }
 
-@keyframes aparecerCartel {
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
+/* --- EFECTO VOLTEO 3D TRIPLE TRIAD --- */
+
+/* Aplicamos perspectiva al tablero para que los giros tengan profundidad 3D */
+.tableroGrid {
+    perspective: 1000px;
 }
+
+/* Clase de animación que aplicaremos dinámicamente a la casilla capturada */
+.animacion-volteo {
+    animation: voltearCarta3D 0.5s ease-in-out forwards;
+    backface-visibility: visible;
+}
+
+

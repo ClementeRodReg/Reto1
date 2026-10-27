@@ -1,4 +1,5 @@
 import { Carta } from './carta.js';
+import { ejecutarTurnoIA } from './logicaOponenteIA.js';
 
 // NUEVO: Variable global para controlar de quién es el turno activo ('jugador' o 'rival')
 let turnoActual = 'jugador'; 
@@ -243,12 +244,24 @@ function inicializarDragAndDrop(misCartas, susCartas) {
                     ejecutarCombate(fila, columna, casilla);
                 }
 
-                // NUEVO: Alternancia estricta de turnos tras colocar la carta con éxito
+                // Alternancia estricta de turnos tras colocar la carta con éxito
                 turnoActual = (turnoActual === 'jugador') ? 'rival' : 'jugador';
                 console.log(`Cambio de turno realizado. Ahora le toca a: ${turnoActual}`);
-                
+
                 // Actualizamos los permisos de arrastre visuales en las manos
                 gestionarTurnosVisibles();
+
+                // NUEVO: Invocamos la lógica externa pasándole las funciones que necesita ejecutar
+                if (turnoActual === 'rival') {
+                    ejecutarTurnoIA(
+                        misCartas, 
+                        susCartas, 
+                        ejecutarCombate, 
+                        gestionarTurnosVisibles, 
+                        () => { turnoActual = 'jugador'; console.log(`[IA] Turno devuelto a: ${turnoActual}`); }
+                    );
+
+                }
             }
         });
     });
@@ -279,12 +292,25 @@ function ejecutarCombate(fila, columna, casillaActual) {
                 const valorDefensor = Number(cartaVecina.valores[dir.caraDefensora]); 
 
                 if (valorAtacante > valorDefensor) {
-                    cartaVecina.cambiarPropietario(); 
+                    cartaVecina.cambiarPropietario(); // Cambia 'azul' <-> 'rojo'
 
-                    const colorFondoNuevo = (cartaVecina.propietario === 'azul') ? 'blue.png' : 'red.png';
-                    casillaVecina.style.backgroundImage = `url('${cartaVecina.imagen}'), url('../img/${colorFondoNuevo}')`;
+                    // 1. Añadimos la clase de animación 3D a la casilla vecina capturada
+                    casillaVecina.classList.add("animacion-volteo");
+
+                    // 2. Esperamos exactamente 250ms (cuando la carta está de perfil a 90 grados)
+                    // para cambiar la imagen de fondo de forma invisible para el ojo
+                    setTimeout(() => {
+                        const colorFondoNuevo = (cartaVecina.propietario === 'azul') ? 'blue.png' : 'red.png';
+                        casillaVecina.style.backgroundImage = `url('${cartaVecina.imagen}'), url('../img/${colorFondoNuevo}')`;
+                    }, 250);
+
+                    // 3. Cuando la animación termina por completo (500ms), limpiamos la clase
+                    // para que la carta pueda volver a ser volteada en futuros turnos si es atacada de nuevo
+                    setTimeout(() => {
+                        casillaVecina.classList.remove("animacion-volteo");
+                    }, 500);
                     
-                    console.log(`¡Carta volteada con éxito! Nueva propiedad: ${cartaVecina.propietario}`);
+                    console.log(`¡Carta volteada en 3D! Nueva propiedad: ${cartaVecina.propietario}`);
                 }
             }
         }
@@ -339,20 +365,26 @@ function evaluarFinPartida(puntosAzul, puntosRojo) {
     turnoActual = 'finalizado';
     gestionarTurnosVisibles();
 
-    // 2. Determinamos el mensaje y la clase CSS según el resultado
-    let titulo = "";
+    let tituloHTML = "";
     let claseResultado = "";
     let subtitulo = `Marcador final: ${puntosAzul} a ${puntosRojo}`;
 
+    // 2. Determinamos el bando ganador y formateamos el texto
     if (puntosAzul > puntosRojo) {
-        titulo = "VICTORIA";
         claseResultado = "resultado-victoria";
+        
+        // Convertimos "¡VICTORIA!" en letras individuales envueltas en spans para la animación en fila
+        const textoVictoria = "VICTORIA";
+        tituloHTML = Array.from(textoVictoria)
+            .map(letra => `<span>${letra}</span>`)
+            .join("");
+            
     } else if (puntosRojo > puntosAzul) {
-        titulo = "DERROTA";
         claseResultado = "resultado-derrota";
+        tituloHTML = "DERROTA"; // En derrota el texto no salta, solo pulsa el brillo rojo
     } else {
-        titulo = "EMPATE";
         claseResultado = "resultado-empate";
+        tituloHTML = "EMPATE";
     }
 
     // 3. Creamos el contenedor del cartel de forma dinámica
@@ -360,13 +392,13 @@ function evaluarFinPartida(puntosAzul, puntosRojo) {
     cartel.className = "cartel-final";
     
     cartel.innerHTML = `
-        <h1 class="${claseResultado}">${titulo}</h1>
+        <h1 class="${claseResultado}">${tituloHTML}</h1>
         <p>${subtitulo}</p>
         <button class="btn-reiniciar" onclick="window.location.reload()">Jugar otra vez</button>
     `;
 
-    // 4. Lo inyectamos directamente al cuerpo de la página
+    // 4. Lo inyectamos al cuerpo de la página
     document.body.appendChild(cartel);
-    console.log(`Partida terminada. Resultado: ${titulo}`);
+    console.log(`Partida terminada con animaciones de cartel activas.`);
 }
 
