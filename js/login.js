@@ -4,6 +4,9 @@
     if (JSON.parse(localStorage.getItem("Usuarios") == null)) {
         localStorage.setItem("Usuarios", JSON.stringify({}));
     }
+    if (JSON.parse(localStorage.getItem("Ranking") == null)) {
+        localStorage.setItem("Ranking", JSON.stringify({}));
+    }
  
  });
  document.getElementById("acceder").addEventListener("click", (event) => {
