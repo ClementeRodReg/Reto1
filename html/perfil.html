@@ -1,40 +1,71 @@
 <!DOCTYPE html>
-	<html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Pefil Triple Triad</title>
-		<link rel="icon" type="image/gif" href="../img/crystal-spinning.gif">
-		<link rel="stylesheet" href="../css/perfil.css">
-        <script type="module" src="../js/perfil.js" defer></script>
-	</head>
-	
-	<body>
-		<header>Perf<span class="i-animada">ı</span>l</header>
-		<div>
-			<form>
-				<fieldset class="filas">
-					<legend>Username</legend>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Triple Triad</title>
+    <link rel="icon" type="image/gif" href="../img/crystal-spinning.gif">
+    <link rel="stylesheet" href="../css/perfil.css">
+    <script type="module" src="../js/perfil.js" defer></script>
+</head>
 
-					<div>
-						<label>Nombre: </label>
-						<input type="text" name="nombre">
-					</div>
+<body>
+    <div class="contenedor-perfil">
+        <header>Perf<span class="i-animada">ı</span>l</header>
+        
+        <form>
+            <fieldset class="cuadro-ff7 filas">
+                <legend>Username</legend>
 
-					<div>
-						<label for="newpassw">Contraseña: </label>
-						<input type="password" name="newpassw">
-					</div>
+                <!-- NUEVO CONECTADO: Contenedor interno para alinear Avatar a la izquierda e Inputs a la derecha -->
+                <div class="cuerpo-formulario-rpg">
+                    
+                    <!-- Avatar dentro del formulario a la izquierda -->
+                    <div class="seccion-avatar-interna">
+                        <div class="marco-avatar" id="selectorAvatar" title="Haz clic para abrir la galería">
+                            <img id="imagenAvatar" src="../img/cartas_triple_triad/card_1.png" alt="Avatar del jugador">
+                            <div class="indicador-cambio">CAMBIAR</div>
+                        </div>
+                    </div>
 
-					<div>
-						<label for="confnewpassw">Confirmar contraseña: </label>
-						<input type="password" name="confnewpassw">
-					</div>
+                    <!-- Bloque de inputs a la derecha -->
+                    <div class="seccion-inputs-interna">
+                        <div class="campo-formulario">
+                            <label>Nombre: </label>
+                            <input type="text" name="nombre" autocomplete="off">
+                        </div>
 
-				</fieldset>
-				<!-- Botón de Enviar -->
-				<button class="boton">Actualizar</button>
-			</form>
-		</div>
-	</body>
+                        <div class="campo-formulario">
+                            <label for="newpassw">Contraseña: </label>
+                            <input type="password" id="newpassw" name="newpassw">
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="confnewpassw">Confirmar contraseña: </label>
+                            <input type="password" id="confnewpassw" name="confnewpassw">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="contenedor-botones-formulario">
+                    <button type="button" class="boton btn-secundario" onclick="window.location.href='index.html'">Volver</button>
+                    <button type="submit" class="boton">Actualizar</button>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- Ventana Modal del Selector (Separada por completo del flujo del formulario) -->
+    <div id="modalAvatar" class="modal-ff7">
+        <div class="contenido-modal-ff7 cuadro-ff7">
+            <div class="cabecera-modal">
+                <h2>Selecciona tu Avatar</h2>
+                <button id="cerrarModal" class="btn-cerrar-retro">X</button>
+            </div>
+            <div id="rejillaAvatares" class="grid-galeria-modal"></div>
+        </div>
+    </div>
+</body>
 </html>
