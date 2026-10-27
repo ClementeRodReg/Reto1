@@ -197,26 +197,7 @@ header span:nth-child(7) { animation-delay: 0.5s; } /* ! */
     border: 1px solid rgba(204, 204, 204, 0.4);
     background-color: rgba(24, 25, 58, 0.3);    /* Fondo sutilmente oscuro en cada casilla para resaltar las cartas que pongas encima */
     box-sizing: border-box;
-}
 
-h2{ text-align: center; }
-
-.tusCartas div, .susCartas div {
-    position: relative; 
-    width: 100px; 
-    height: 130px; 
-    box-sizing: border-box;
-    border: 1px dashed #cccccc; 
-    margin-bottom: 10px; /* Separación vertical entre tus cartas */
-
-    /* --- NUEVAS PROPIEDADES PARA CENTRAR LAS IMÁGENES --- */
-    background-size: contain;     /* Ajusta la carta por completo dentro del recuadro sin cortarla */
-    background-position: center;  /* Centra la carta horizontal y verticalmente */
-    background-repeat: no-repeat; /* Evita que la carta o el fondo azul/rojo se dupliquen */
-}
-
-/* Regla separada para el tablero para que NO herede los 100x130px y mantenga su tamaño correcto */
-.tableroGrid div {
     position: relative;
     box-sizing: border-box;
     /* Las dimensiones de las casillas ya las maneja el grid-template del tablero (150x150px) */
@@ -227,30 +208,71 @@ h2{ text-align: center; }
     background-repeat: no-repeat;
 }
 
-/* --- CONTENEDOR DE VALORES (CRUZ TRIPLE TRIAD) --- */
-.valores-carta {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 35px;
-    height: 35px;
-    display: grid;
-    /* Creamos una cuadrícula de 3x3 para posicionar la cruz */
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    font-family: FFVIII;
-    font-size: 24px; /* Ajusta el tamaño si los números se ven muy grandes o pequeños */
-    color: #ffffff;
-    text-shadow: 1px 1px 2px #000000, -1px -1px 2px #000000; /* Borde negro para que se lea sobre cualquier fondo */
-    line-height: 1;
-    pointer-events: none; /* Evita que los números interfieran con los clics */
+h2{ text-align: center; }
+
+.tusCartas div, .susCartas div {
+    position: relative; 
+    width: 100px; 
+    height: 130px; 
+    box-sizing: border-box;
+    margin-bottom: 10px; 
+
+    /* PROPIEDADES CRUCIALES DE ALINEACIÓN DE FONDOS */
+    background-size: contain;     
+    background-position: center;  
+    background-repeat: no-repeat; 
+    
+    /* Nueva propiedad: evita que cualquier contenido interno desplace los fondos */
+    display: block; 
 }
 
-/* Posicionamiento milimétrico de cada dirección dentro de la cuadrícula 3x3 */
-.val-norte { grid-column: 2; grid-row: 1; justify-self: center; align-self: start; }
-.val-oeste { grid-column: 1; grid-row: 2; justify-self: start;  align-self: center; }
-.val-este  { grid-column: 3; grid-row: 2; justify-self: end;    align-self: center; }
-.val-sur   { grid-column: 2; grid-row: 3; justify-self: center; align-self: end; }
+/* --- CONTENEDOR DE VALORES (CRUZ TRIPLE TRIAD) --- */
+.valores-carta {
+    position: absolute !important; /* Forzamos que flote de manera absoluta */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: 5;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.valores-carta span {
+    position: absolute !important; /* Cada número se posiciona de forma independiente */
+    font-family: FFVIII, sans-serif !important;
+    font-size: 22px !important; /* Ajusta este tamaño a tu gusto */
+    color: #ffffff !important;
+    text-shadow: 2px 2px 1px #000000, -1px -1px 1px #000000 !important;
+    line-height: 1 !important;
+    width: 20px;
+    text-align: center;
+}
+
+/* Coordenadas milimétricas exactas para formar el rombo clásico */
+.val-norte {
+    top: 4px;
+    left: 18px; /* Centrado en el eje superior */
+}
+
+.val-oeste {
+    top: 18px;
+    left: 4px;  /* Extremo izquierdo */
+}
+
+.val-este {
+    top: 18px;
+    left: 32px; /* Extremo derecho */
+}
+
+.val-sur {
+    top: 32px;
+    left: 18px; /* Centrado en el eje inferior */
+}
+
+
+
 
 
 /* --- CONTENEDOR DEL MARCADOR --- */

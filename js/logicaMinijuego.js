@@ -15,19 +15,34 @@ document.addEventListener("DOMContentLoaded", async () => {
         const cartasPartida = idsAleatorios.map(id => {
             const claveCard = `card_${id}`;
             const datosJson = baseDatosCartas[claveCard];
-            const rutaImagen = `../img/cartas_triple_triad/card_${id}.png`; // Construye la ruta de la imagen
+            
+            if (!datosJson) {
+                console.error(`La clave ${claveCard} no existe en el JSON.`);
+                return new Carta("Error", { norte: 1, sur: 1, este: 1, oeste: 1 }, "../img/blue.png", null);
+            }
 
-            // Mapeamos los nombres del JSON (arriba/abajo...) a los de tu clase Carta (norte/sur...)
-            const valoresCarta = {
+            // 1. Creamos una instancia vacía/base de la clase Carta
+            // Le pasamos parámetros genéricos por si el constructor hace comprobaciones obligatorias
+            const nuevaCarta = new Carta("Genérica", {}, "", null);
+
+            // 2. FORZAMOS MANUALMENTE LAS PROPIEDADES DIRECTAS (Evita cualquier [object Object])
+            nuevaCarta.nombre = String(datosJson.nombre);
+            
+            // Forzamos la ruta de la imagen como una cadena de texto pura y dura
+            nuevaCarta.imagen = `../img/cartas_triple_triad/card_${id}.png`; 
+            nuevaCarta.elemento = null;
+            nuevaCarta.propietario = null;
+
+            // Forzamos el objeto de valores con números reales
+            nuevaCarta.valores = {
                 norte: Number(datosJson.valores.arriba),
                 sur: Number(datosJson.valores.abajo),
                 este: Number(datosJson.valores.derecha),
                 oeste: Number(datosJson.valores.izquierda)
             };
 
-            // Creamos la instancia pasándole (nombre, valores, imagen, elemento)
-            // (Nota: Como en el JSON original de FFVIII la letra 'A' equivale al valor 10, lo dejamos preparado por si acaso)
-            return new Carta(datosJson.nombre, valoresCarta, rutaImagen, null);
+            // 3. Devolvemos la carta ya ensamblada a la perfección
+            return nuevaCarta;
         });
 
         // 4. Repartir las cartas (5 para ti y 5 para el rival)
@@ -66,8 +81,8 @@ function renderizarCartasIniciales(jugador, rival) {
     jugador.forEach((carta, index) => {
         const contenedor = document.querySelector(`.tucarta${index + 1}`);
         if (contenedor) {
+            // carta.imagen ya trae el '../img/cartas_triple_triad/...' de forma limpia
             contenedor.style.backgroundImage = `url('${carta.imagen}'), url('../img/blue.png')`;
-            // Inyectamos la estructura de los números leyendo el objeto 'valores' de la instancia
             contenedor.innerHTML = creartHtmlValores(carta);
         }
     });
@@ -77,30 +92,29 @@ function renderizarCartasIniciales(jugador, rival) {
         const contenedor = document.querySelector(`.sucarta${index + 1}`);
         if (contenedor) {
             contenedor.style.backgroundImage = `url('${carta.imagen}'), url('../img/red.png')`;
-            // Inyectamos la estructura de los números leyendo el objeto 'valores' de la instancia
             contenedor.innerHTML = creartHtmlValores(carta);
         }
     });
 }
+
 
 /**
  * Función auxiliar para generar la estructura HTML de la cruz de números.
  * Convierte el valor 10 en la letra 'A' al estilo clásico de FFVIII.
  */
 function creartHtmlValores(carta) {
+    // Si por alguna razón el número no se cargó, le ponemos un 0 para que no rompa la pantalla con un texto largo
     const n = carta.valores.norte;
     const s = carta.valores.sur;
     const e = carta.valores.este;
     const o = carta.valores.oeste;
 
-    return `
-        <div class="valores-carta">
-            <span class="val-norte">${n}</span>
-            <span class="val-oeste">${o}</span>
-            <span class="val-este">${e}</span>
-            <span class="val-sur">${s}</span>
-        </div>
-    `;
+    return `<div class="valores-carta">
+    <span class="val-norte">${n}</span>
+    <span class="val-oeste">${o}</span>
+    <span class="val-este">${e}</span>
+    <span class="val-sur">${s}</span>
+    </div>`;
 }
 
 
