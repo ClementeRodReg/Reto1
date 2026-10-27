@@ -72,8 +72,8 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     position: absolute;
     
     /* Empuja los botones hacia abajo (pasando el título) y hacia la derecha */
-    top: 330px;       /* Ajusta este valor para subirlos o bajarlos */
-    right: 100px;     /* Ajusta este valor para moverlos más a la derecha o izquierda */
+    top: 250px;       /* Ajusta este valor para subirlos o bajarlos */
+    right: 70px;     /* Ajusta este valor para moverlos más a la derecha o izquierda */
     
     display: flex;
     flex-direction: column; /* Coloca los botones uno debajo del otro estilo FF */
@@ -221,22 +221,23 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     
     /* Posicionamiento: lo subimos por encima de la letra */
     top: 20px;  /* Ajustar este valor según el tamaño de la fuente */
-    left: 50%;
+    left: 49%;
     transform: translateX(-50%);
 }
+
 .contenedorPadre{
     width: 50%;
     height: 50%;
     display: flex;
-    
-
 }
+
 .Principal{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
+
 .contenedorLogin{
 width: 50%;
 display: flex;
@@ -254,17 +255,13 @@ display: flex;
 align-items: center;
 flex-direction: column;
 margin: 0.1%;
-
-
 }
-input{
 
+input{
     border: solid grey 2px;
     border-radius: 10px;
 }
+
 div input{
-width: 80%;
-
-
-
+    width: 80%;
 }

@@ -1,0 +1,81 @@
+@font-face {
+    font-family: FFVIII;
+    src: url(../fonts/OPTIEngeEtienne.woff2);
+}
+
+* {
+   font-family: FFVIII;
+   color:#eeeeee;
+}
+
+body{
+    background-color: #18193A;
+    display: flex;
+    justify-content: center;
+
+    min-height: 100vh;   /* Opcional: asegura que el body ocupe toda la pantalla */
+}
+
+header {
+    font-size: 110px;
+    position: relative;
+    letter-spacing: 2px;
+}
+
+/* Contenedor de la letra: debe ser relative para que el GIF se alinee con ella */
+.i-animada {
+    position: relative;
+    display: inline-block;
+}
+
+/* El GIF animado que hará de punto */
+.i-animada::after {
+    content: "";
+    position: absolute;
+    
+    /* Configura el tamaño del punto animado */
+    width: 50px;  
+    height: 50px;
+    
+    /* Carga aquí la ruta del GIF */
+    background-image: url('../img/crystal-spinning.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Posicionamiento: lo subimos por encima de la letra */
+    top: 20px;  /* Ajustar este valor según el tamaño de la fuente */
+    left: 48%;
+    transform: translateX(-53%);
+}
+
+.filas{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+legend{
+    font-size: 50px;
+}
+
+label{
+    text-align: right;
+    width: fit-content;
+}
+
+.boton {
+    background: rgba(0, 0, 0, 0.6); 
+    border: 2px solid #cccccc;
+    color: #cccccc;
+    font-family: FFVIII;
+    font-size: 25px;
+    padding: 8px 10px; /* Restaurado a un padding normal y simétrico */
+    text-align: left;
+    outline: none; 
+
+}
+
+.boton:hover {
+    background: rgba(255, 255, 255, 0.1); /* Efecto sutil al pasar el ratón */
+}
