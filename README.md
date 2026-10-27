@@ -10,7 +10,7 @@ Desafía tu mente en un tablero de **3x3** donde la estrategia, el posicionamien
 
 - 🎮 **Jugabilidad Clásica:** Mecánica pura de Triple Triad (coloca cartas y captura las adyacentes si tu número es mayor).
 - 🧠 **Modos de Juego:** 
-  - 👥 Local de 2 Jugadores (en la misma pantalla).
+  - 👥 Local vs IA.
 - 🎨 **Estética Cuidada:** Diseño limpio con marcos inspirados en el juego original.
 - ⚡ **Animaciones Fluidas:** Transiciones con CSS para el volteo de las cartas al ser capturadas.
 
