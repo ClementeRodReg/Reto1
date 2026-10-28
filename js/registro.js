@@ -1,34 +1,55 @@
-document.addEventListener("DOMContentLoaded" , () =>
 
-document.getElementById("Registrarse").addEventListener("click", (event) => {
-  if (
-    document.getElementById("usuario").checkValidity() &&
-    document.getElementById("Contraseña").checkValidity()
-  ) {
-    event.preventDefault();
+function configurarRegistro() {
+    const botonRegistro = document.getElementById("Registrarse");
 
-    let usuario = document.getElementById("usuario").value;
-    let Contraseña = document.getElementById("Contraseña").value;
+    if (!botonRegistro) {
+        console.error("No se encuentra el botón Registrarse");
+        return;
+    }
 
-    let objetoUsuarios = JSON.parse(localStorage.getItem("Usuarios")) || {};
+    botonRegistro.addEventListener("click", function (event) {
+        event.preventDefault();
 
-    let datoUsuario = objetoUsuarios[usuario];
+        const campoUsuario = document.getElementById("usuario");
+        const campoContraseña = document.getElementById("Contraseña");
 
-    if (datoUsuario == null) {
-      let objeto = {
-        usuario: usuario,
-        contraseña: Contraseña,
-      };
-    
-    objetoUsuarios[usuario] = objeto;
+        if (
+            campoUsuario.checkValidity() &&
+            campoContraseña.checkValidity()
+        ) {
+            let usuario = campoUsuario.value;
+            let Contraseña = campoContraseña.value;
 
-    localStorage.setItem("Usuarios", JSON.stringify(objetoUsuarios));
+            let objetoUsuarios =
+                JSON.parse(localStorage.getItem("Usuarios")) || {};
 
-    sessionStorage.setItem("sesion", JSON.stringify(objeto));
-    window.location = "./index.html";
-  }else {
-    alert("El usuario Ya existe")
-  }
-}})
+            let datoUsuario = objetoUsuarios[usuario];
 
-);
+            if (datoUsuario == null) {
+                let objeto = {
+                    usuario: usuario,
+                    contraseña: Contraseña
+                };
+
+                objetoUsuarios[usuario] = objeto;
+
+                localStorage.setItem(
+                    "Usuarios",
+                    JSON.stringify(objetoUsuarios)
+                );
+
+                sessionStorage.setItem(
+                    "sesion",
+                    JSON.stringify(objeto)
+                );
+
+                window.location = "./index.html";
+            } else {
+                alert("El usuario Ya existe");
+            }
+        } else {
+            campoUsuario.reportValidity();
+            campoContraseña.reportValidity();
+        }
+    });
+}
