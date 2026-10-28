@@ -1,4 +1,3 @@
-
 const abrirLogin = document.getElementById("abrirLogin");
 const modalLogin = document.getElementById("modalLogin");
 

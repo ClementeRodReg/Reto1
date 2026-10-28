@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -9,7 +10,7 @@
     <link rel="icon" type="image/gif" href="../img/crystal-spinning.gif" />
     <link rel="stylesheet" href="../css/styles.css" />
 
-    <script type="module" src="../js/logica.js" defer></script>
+    <script type="module" src="../js/logica.js"></script>
   </head>
 
   <body>
@@ -17,21 +18,34 @@
 
     <div class="menu-principal">
       <header>
-        <span>T</span><span>r</span><span class="i-animada">ı</span
-        ><span>p</span><span>l</span><span>e</span> <span>T</span><span>r</span
-        ><span class="i-animada">ı</span><span>a</span><span>d</span>
+        <span>T</span><span>r</span><span class="i-animada">ı</span>
+        <span>p</span><span>l</span><span>e</span>
+        <span>T</span><span>r</span><span class="i-animada">ı</span>
+        <span>a</span><span>d</span>
       </header>
 
       <div class="containerBotones">
-        <button id="abrirLogin">Inicio / Registro</button>
-        <button id="abrirRanking">Ranking</button>
-        <button id="abrirNormas">Normas</button>
+        <button id="abrirLogin" type="button">Inicio / Registro</button>
+        <button id="abrirRanking" type="button">Ranking</button>
+        <button id="abrirNormas" type="button">Normas</button>
       </div>
+
+      <button id="abrirPerfil" class="boton-perfil" type="button">
+        <img
+          src="../img/Portrait_Placeholder.png"
+          alt="Perfil"
+          class="imagen-perfil-menu"
+        />
+        <span>Perfil</span>
+      </button>
     </div>
 
-    <!-- Aquí se cargará el HTML del login -->
+    <!-- Ventanas modales -->
     <div id="modalLogin" class="fondo-modal"></div>
+    <div id="modalPerfil" class="fondo-modal"></div>
 
+    <!-- Scripts de las ventanas -->
     <script src="../js/ventanaLogin.js" defer></script>
+    <script src="../js/ventanaPerfil.js" defer></script>
   </body>
 </html>
