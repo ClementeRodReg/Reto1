@@ -1,52 +1,41 @@
 <div class="contenedorPadre perfil-modal">
-    <button id="cerrarPerfil" class="cerrar-modal" type="button" aria-label="Cerrar">&times;</button>
-
+ <button id="cerrarPerfil" class="cerrar-modal" type="button" aria-label="Cerrar">&times;</button>
     <section class="tarjeta-perfil">
         <h2 id="tituloUsuario">Mi perfil</h2>
-
         <img
             src="../img/Portrait_Placeholder.png"
             alt="Foto de perfil"
             id="fotoPerfil"
             class="foto-perfil"
         />
-
         <form id="formPerfil">
             <label for="usuarioPerfil">Nombre de usuario:</label>
             <input type="text" id="usuarioPerfil" required />
-
             <label for="contraseñaPerfil">Contraseña:</label>
             <input type="password" id="contraseñaPerfil" required />
-
             <label for="fileReader">Foto de perfil:</label>
             <input
                 type="file"
                 id="fileReader"
                 accept="image/*"
             />
-
             <button type="submit">Guardar cambios</button>
             <button type="button" id="cerrarSesion" class="btn-cerrar-sesion">Cerrar sesión</button>
         </form>
-
         <p class="texto-perfil">Estadísticas del jugador</p>
-
         <div class="estadisticas-perfil">
             <div class="estadistica">
                 <span class="etiqueta-estadistica">Victorias</span>
                 <span class="valor-estadistica" id="victorias">0</span>
             </div>
-
             <div class="estadistica">
                 <span class="etiqueta-estadistica">Derrotas</span>
                 <span class="valor-estadistica" id="derrotas">0</span>
             </div>
-
             <div class="estadistica">
                 <span class="etiqueta-estadistica">Empates</span>
                 <span class="valor-estadistica" id="empates">0</span>
             </div>
-
             <div class="estadistica estadistica-porcentaje">
                 <span class="etiqueta-estadistica">Porcentaje de victorias</span>
                 <span class="valor-estadistica" id="porcentajeVictorias">0%</span>
