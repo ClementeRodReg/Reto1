@@ -1,0 +1,361 @@
+@font-face {
+    font-family: FFVIII;
+    src: url(../fonts/OPTIEngeEtienne.woff2);
+}
+
+* {
+    font-family: FFVIII, sans-serif;
+    color: #eeeeee;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #18193A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 15px 50px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Ángel de fondo idéntico al index */
+.angel {
+    height: 92%;
+    width: 92%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
+    animation: aparecerDesdeIzquierda 3s ease-out forwards;
+}
+
+@keyframes aparecerDesdeIzquierda {
+    0% {
+        transform: translate(-100%, -50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%);
+        opacity: 0.7;
+    }
+}
+
+/* Contenedor central del ranking */
+.menu-principal.ranking-layout {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 860px;
+    margin-top: 30px;
+}
+
+/* Header idéntico al index con letras animadas */
+header {
+    font-size: 90px;
+    position: relative;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+header span {
+    display: inline-block;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: aparecerLetra 0.15s ease-out forwards;
+}
+
+header span:nth-child(1)  { animation-delay: 3.00s; } /* T */
+header span:nth-child(2)  { animation-delay: 3.05s; } /* r */
+header span:nth-child(3)  { animation-delay: 3.10s; } /* ı (con cristal) */
+header span:nth-child(4)  { animation-delay: 3.15s; } /* p */
+header span:nth-child(5)  { animation-delay: 3.20s; } /* l */
+header span:nth-child(6)  { animation-delay: 3.25s; } /* e */
+header span:nth-child(7)  { animation-delay: 3.30s; } /* Espacio */
+header span:nth-child(8)  { animation-delay: 3.35s; } /* T */
+header span:nth-child(9)  { animation-delay: 3.40s; } /* r */
+header span:nth-child(10) { animation-delay: 3.45s; } /* ı */
+header span:nth-child(11) { animation-delay: 3.50s; } /* a */
+header span:nth-child(12) { animation-delay: 3.55s; } /* d */
+
+@keyframes aparecerLetra {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Cristal animado en la letra ı */
+.i-animada {
+    position: relative;
+    display: inline-block;
+}
+
+.i-animada::after {
+    content: "";
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    background-image: url('../img/crystal-spinning.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 15px;
+    left: 49%;
+    transform: translateX(-50%);
+}
+
+/* Cuadro estilo Final Fantasy */
+.contenedorRanking {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 60, 0.88) 0%, rgba(10, 15, 50, 0.92) 50%, rgba(5, 5, 25, 0.95) 100%);
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 3px #5d64a4, 0 12px 35px rgba(0, 0, 0, 0.85);
+    border-radius: 8px;
+    padding: 25px 30px 22px;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    animation: aparecerBoton 0.7s ease-out 3.1s forwards;
+}
+
+@keyframes aparecerBoton {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título de la sección Ranking */
+.titulo-ranking {
+    font-size: 38px;
+    letter-spacing: 4px;
+    text-align: center;
+    margin: 0 0 15px 0;
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #000000, 0 0 12px rgba(255, 255, 255, 0.35);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 12px;
+}
+
+/* Contenedor con scroll horizontal para móviles */
+.tabla-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Tabla de clasificación */
+.contenedorRanking table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 5px 0 20px 0;
+}
+
+.contenedorRanking th {
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: #ffd700;
+    text-shadow: 2px 2px 0 #000000;
+    padding: 10px 14px;
+    border-bottom: 2px solid #5d64a4;
+    background: rgba(0, 0, 0, 0.45);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.contenedorRanking th.col-pos {
+    width: 60px;
+}
+
+.contenedorRanking th.col-nombre {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.contenedorRanking td {
+    font-size: 22px;
+    padding: 8px 14px;
+    border-bottom: 1px solid rgba(93, 100, 164, 0.25);
+    text-align: center;
+    color: #e0e0e0;
+    text-shadow: 1px 1px 0 #000000;
+    transition: background-color 0.15s ease;
+}
+
+.contenedorRanking td:nth-child(2) {
+    text-align: left;
+    padding-left: 20px;
+    color: #ffffff;
+}
+
+.contenedorRanking td:nth-child(3) {
+    color: #6ee7b7; /* Victorias */
+}
+
+.contenedorRanking td:nth-child(4) {
+    color: #fca5a5; /* Derrotas */
+}
+
+.contenedorRanking td:nth-child(5) {
+    color: #ffd700; /* Porcentaje */
+}
+
+/* Resaltado de fila al pasar el ratón */
+.contenedorRanking tbody tr:hover td {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Colores para el podio (Top 3) */
+.contenedorRanking tbody tr:nth-child(1) td:first-child {
+    color: #ffd700;
+    font-size: 26px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.contenedorRanking tbody tr:nth-child(2) td:first-child {
+    color: #e2e8f0;
+    font-size: 24px;
+    text-shadow: 0 0 8px rgba(226, 232, 240, 0.6);
+}
+
+.contenedorRanking tbody tr:nth-child(3) td:first-child {
+    color: #d97706;
+    font-size: 24px;
+    text-shadow: 0 0 8px rgba(217, 119, 6, 0.6);
+}
+
+/* Botones inferiores */
+.contenedorBotonesRanking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 15px;
+}
+
+/* Estilo de botones idéntico al index */
+.contenedorBotonesRanking button {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #cccccc;
+    color: #cccccc;
+    font-family: FFVIII, sans-serif;
+    font-size: 26px;
+    padding: 8px 32px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+    outline: none;
+    position: relative;
+    border-radius: 4px;
+}
+
+/* Efecto hover y focus */
+.contenedorBotonesRanking button:hover,
+.contenedorBotonesRanking button:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+/* Mano/cursor de Final Fantasy al enfocar o pasar el ratón */
+.contenedorBotonesRanking button:focus::before,
+.contenedorBotonesRanking button:hover::before {
+    content: "";
+    position: absolute;
+    left: -45px;
+    top: 50%;
+    width: 35px;
+    height: 20px;
+    background-image: url('../img/cursor.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: flotarMano 0.6s infinite alternate ease-in-out;
+}
+
+@keyframes flotarMano {
+    0% {
+        transform: translate(0, -50%);
+    }
+    100% {
+        transform: translate(-6px, -50%);
+    }
+}
+
+#botonVolver:hover,
+#botonVolver:focus {
+    border-color: #60a5fa;
+    color: #93c5fd;
+    box-shadow: 0 0 12px rgba(96, 165, 250, 0.35);
+}
+
+#botonResetear:hover,
+#botonResetear:focus {
+    border-color: #f87171;
+    color: #fca5a5;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
+}
+
+/* Salto de animación cuando el usuario hace clic o presiona una tecla */
+body.sin-espera .angel {
+    animation: none !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 0.7 !important;
+}
+
+body.sin-espera header span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+body.sin-espera .contenedorRanking {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    header {
+        font-size: 60px;
+    }
+    .i-animada::after {
+        width: 30px;
+        height: 30px;
+        top: 10px;
+    }
+    .contenedorRanking {
+        padding: 15px;
+    }
+    .titulo-ranking {
+        font-size: 28px;
+    }
+    .contenedorRanking th {
+        font-size: 18px;
+        padding: 8px;
+    }
+    .contenedorRanking td {
+        font-size: 16px;
+        padding: 6px 8px;
+    }
+    .contenedorBotonesRanking {
+        gap: 25px;
+    }
+    .contenedorBotonesRanking button {
+        font-size: 20px;
+        padding: 6px 20px;
+    }
+}

@@ -36,9 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const botonActivo = document.activeElement;
             
             // Si el botón enfocado actualmente es el de "Normas"
-            if (botonActivo && botonActivo.textContent === "Normas") {
+            if (botonActivo && (botonActivo.id === "abrirNormas" || botonActivo.textContent.trim() === "Normas")) {
                 e.preventDefault();
                 mostrarVentanaNormas(); // Ejecuta la función del otro archivo
+            } else if (botonActivo && (botonActivo.id === "abrirRanking" || botonActivo.textContent.trim() === "Ranking")) {
+                e.preventDefault();
+                window.location.href = "ranking.html";
             }
         }
     });
@@ -52,8 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // También añadimos el evento click por si usan el ratón
         boton.addEventListener("click", () => {
-            if (boton.textContent === "Normas") {
+            if (boton.id === "abrirNormas" || boton.textContent.trim() === "Normas") {
                 mostrarVentanaNormas();
+            } else if (boton.id === "abrirRanking" || boton.textContent.trim() === "Ranking") {
+                window.location.href = "ranking.html";
             }
         });
     });

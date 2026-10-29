@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-	<html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Triple Triad</title>
-		<link rel="stylesheet" href="../css/styles.css">
-        <script type="module" src="../js/logica.js" defer></script>
-	</head>
-	<header>Tr<span class="i-animada">ı</span>ple Tr<span class="i-animada">ı</span>ad</header>
-	<body>
-		
-			<div class="contenedorRanking">
-			<table>
-				<thead>
-					<th></th>
-					
-					<th>Nombre</th>
-					<th>Victorias</th>
-					<th>Derrotas</th>
-					<th>Porcentaje de Victorias</th>
-				</thead>
-				<tbody id="tBody">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple Triad - Ranking</title>
+    <link rel="icon" type="image/gif" href="../img/crystal-spinning.gif">
+    <link rel="stylesheet" href="../css/ranking.css">
+</head>
 
-				</tbody>
-			</table>
-					<button id="botonResetear">Resetear</button>
-		<script src="../js/ranking.js"></script>
-	</body>
+<body>
+    <img src="../img/dAeC3t.png" alt="angel" class="angel">
+
+    <div class="menu-principal ranking-layout">
+        <header>
+            <span>T</span><span>r</span><span class="i-animada">ı</span><span>p</span><span>l</span><span>e</span>
+            <span>T</span><span>r</span><span class="i-animada">ı</span><span>a</span><span>d</span>
+        </header>
+
+        <div class="contenedorRanking">
+            <h2 class="titulo-ranking">RANKING DE JUGADORES</h2>
+            <div class="tabla-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="col-pos">#</th>
+                            <th class="col-nombre">Nombre</th>
+                            <th class="col-vic">Victorias</th>
+                            <th class="col-der">Derrotas</th>
+                            <th class="col-porc">% Victorias</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBody"></tbody>
+                </table>
+            </div>
+
+            <div class="contenedorBotonesRanking">
+                <button id="botonVolver" type="button" onclick="window.location.href='index.html'">Volver</button>
+                <button id="botonResetear" type="button">Resetear</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/ranking.js"></script>
+</body>
 </html>
