@@ -143,6 +143,7 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     text-align: center;
     margin: 0 0 15px 0;
     color: #ffffff;
+    font-weight: 500;
     text-shadow: 2px 2px 0 #000000, 0 0 12px rgba(255, 255, 255, 0.35);
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 12px;
@@ -168,6 +169,7 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     color: #ffd700;
     text-shadow: 2px 2px 0 #000000;
     padding: 10px 14px;
+    font-weight: 500;
     border-bottom: 2px solid #5d64a4;
     background: rgba(0, 0, 0, 0.45);
     text-align: center;
@@ -227,6 +229,7 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
 .contenedorRanking tbody tr:nth-child(2) td:first-child {
     color: #e2e8f0;
     font-size: 24px;
+    font-weight: 400;
     text-shadow: 0 0 8px rgba(226, 232, 240, 0.6);
 }
 
