@@ -481,3 +481,110 @@ h2{
 }
 
 
+/* ==========================================================================
+   PANEL DE SUBIDA DE NIVEL RPG (CON ANIMACIÓN SECUENCIAL)
+   ========================================================================== */
+
+.contenedor-stats-rpg {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(254, 254, 254, 0.15);
+    border-radius: 6px;
+    padding: 15px 25px;
+    margin: 15px auto 20px auto;
+    max-width: 320px; 
+    width: 100%;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.titulo-stats-rpg {
+    font-size: 28px;
+    margin: 0 0 15px 0;
+    text-align: center; 
+    color: #ffd700;
+    text-shadow: 1px 1px 0px #000;
+    letter-spacing: 2px;
+}
+
+.tabla-stats-rpg {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Fila alineada en 4 columnas */
+.fila-rpg-stat {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr 0.6fr 0.6fr; 
+    align-items: center;
+    font-size: 25px; 
+    letter-spacing: 1px;
+}
+
+/* Alineaciones bases */
+.fila-rpg-stat span:nth-child(1) { text-align: left; }  /* Nombre */
+.fila-rpg-stat span:nth-child(2) { text-align: center; } /* Stat Vieja */
+.fila-rpg-stat span:nth-child(4) { text-align: center; } /* Stat Nueva */
+
+/* --- 1. APARICIÓN EN CASCADA DE LAS LÍNEAS VIEJAS ---
+   Nacen invisibles y van apareciendo de arriba a abajo */
+.tabla-stats-rpg .fila-rpg-stat {
+    opacity: 0;
+    animation: revelarElemento 0.3s ease-out forwards;
+}
+.tabla-stats-rpg .fila-rpg-stat:nth-child(1) { animation-delay: 0.6s; } /* Fila 1 (0.6s) */
+.tabla-stats-rpg .fila-rpg-stat:nth-child(2) { animation-delay: 0.9s; } /* Fila 2 (0.9s) */
+.tabla-stats-rpg .fila-rpg-stat:nth-child(3) { animation-delay: 1.2s; } /* Fila 3 (1.2s) */
+
+
+/* --- 2. APARICIÓN AL UNÍSONO DE LAS FLECHAS ---
+   Esperan a que terminen las filas (1.2s) y saltan todas juntas a los 1.6s */
+.flecha-rpg {
+    color: #a0a5d0;
+    text-align: center; 
+    font-size: 22px;
+    opacity: 0;
+    animation: revelarElemento 0.2s ease-out forwards;
+    animation-delay: 1.6s !important; /* Aparecen todas a la vez */
+}
+
+
+/* --- 3. APARICIÓN EN CASCADA DE LAS ESTADÍSTICAS NUEVAS ---
+   Esperan a las flechas y se revelan de una en una de arriba a abajo */
+.stat-sube, .stat-baja, .stat-neutral {
+    opacity: 0;
+    display: inline-block;
+    animation: revelarElemento 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+/* Buscamos la cuarta columna (el stat nuevo) de cada fila para retrasarla individualmente */
+.tabla-stats-rpg .fila-rpg-stat:nth-child(1) span:nth-child(4) { animation-delay: 2.0s !important; }
+.tabla-stats-rpg .fila-rpg-stat:nth-child(2) span:nth-child(4) { animation-delay: 2.4s !important; }
+.tabla-stats-rpg .fila-rpg-stat:nth-child(3) span:nth-child(4) { animation-delay: 2.8s !important; }
+
+
+/* --- KEYFRAME GENERAL DE REVELADO DE DATOS --- */
+@keyframes revelarElemento {
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* --- DETALLES DE COLORES DE ATRIBUTOS --- */
+.stat-sube {
+    color: #3a86ff !important;
+    text-shadow: 0 0 8px rgba(58, 134, 255, 0.6);
+}
+.stat-baja {
+    color: #ff006e !important;
+    text-shadow: 0 0 8px rgba(255, 0, 110, 0.6);
+}
+.stat-neutral {
+    color: #eeeeee !important;
+}
+
+.cartel-final p.marcador-texto {
+    font-size: 24px;
+    color: #a0a5d0;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}

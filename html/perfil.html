@@ -11,16 +11,17 @@
 
 <body>
     <div class="contenedor-perfil">
+        <!-- El título clásico con tu cromo giratorio -->
         <header>Perf<span class="i-animada">ı</span>l</header>
         
-        <form>
+        <form id="formularioPerfil">
             <fieldset class="cuadro-ff7 filas">
-                <legend>Username</legend>
+                <!-- Se actualizará dinámicamente con el nombre del usuario -->
+                <legend id="legendUsername">Cargando...</legend>
 
-                <!-- NUEVO CONECTADO: Contenedor interno para alinear Avatar a la izquierda e Inputs a la derecha -->
                 <div class="cuerpo-formulario-rpg">
                     
-                    <!-- Avatar dentro del formulario a la izquierda -->
+                    <!-- Sección Izquierda: Marco del Avatar de Carta -->
                     <div class="seccion-avatar-interna">
                         <div class="marco-avatar" id="selectorAvatar" title="Haz clic para abrir la galería">
                             <img id="imagenAvatar" src="../img/cartas_triple_triad/card_1.png" alt="Avatar del jugador">
@@ -28,28 +29,36 @@
                         </div>
                     </div>
 
-                    <!-- Bloque de inputs a la derecha -->
+                    <!-- Sección Derecha: Campos de entrada controlados -->
                     <div class="seccion-inputs-interna">
                         <div class="campo-formulario">
-                            <label>Nombre: </label>
-                            <input type="text" name="nombre" autocomplete="off">
+                            <label for="perfilNombre">Nombre: </label>
+                            <input type="text" id="perfilNombre" name="nombre" autocomplete="off" required>
                         </div>
 
                         <div class="campo-formulario">
-                            <label for="newpassw">Contraseña: </label>
+                            <label for="oldpassw">Pass Antigua: </label>
+                            <input type="password" id="oldpassw" name="oldpassw" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="newpassw">Pass Nueva: </label>
                             <input type="password" id="newpassw" name="newpassw">
                         </div>
 
                         <div class="campo-formulario">
-                            <label for="confnewpassw">Confirmar contraseña: </label>
+                            <label for="confnewpassw">Confirmar: </label>
                             <input type="password" id="confnewpassw" name="confnewpassw">
                         </div>
                     </div>
 
                 </div>
 
+                <!-- Bloque de Botones Inferiores Unificados (Alineados horizontalmente a la derecha) -->
                 <div class="contenedor-botones-formulario">
-                    <button type="button" class="boton btn-secundario" onclick="window.location.href='index.html'">Volver</button>
+                    <button type="button" id="btnVolverIndex" class="boton btn-secundario">Volver</button>
+                    <button type="button" id="btnLogoff" class="boton btn-secundario" style="border-color: #ff006e !important; color: #ff006e !important;">Cerrar Sesión</button>
+                    <button type="button" id="btnBorrarUsuario" class="boton btn-secundario" style="border-color: #ff0000 !important; color: #ff4d4d !important;">Borrar Cuenta</button>
                     <button type="submit" class="boton">Actualizar</button>
                 </div>
 
@@ -57,7 +66,7 @@
         </form>
     </div>
 
-    <!-- Ventana Modal del Selector (Separada por completo del flujo del formulario) -->
+    <!-- Ventana Modal de Catálogo (Permanecerá intacta) -->
     <div id="modalAvatar" class="modal-ff7">
         <div class="contenido-modal-ff7 cuadro-ff7">
             <div class="cabecera-modal">

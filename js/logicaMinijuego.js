@@ -355,10 +355,10 @@ function actualizarMarcador() {
 }
 
 /**
- * Compara las puntuaciones finales, congela los turnos y despliega el cartel de desenlace.
+ * Compara las puntuaciones finales, congela los turnos, actualiza las estadísticas 
+ * e inyecta la subida de nivel estilo RPG en el cartel final.
  */
 function evaluarFinPartida(puntosAzul, puntosRojo) {
-    // 1. Forzamos el bloqueo de turnos para que nadie pueda mover nada más
     turnoActual = 'finalizado';
     gestionarTurnosVisibles();
 
@@ -366,31 +366,118 @@ function evaluarFinPartida(puntosAzul, puntosRojo) {
     let claseResultado = "";
     let subtitulo = `Marcador final: ${puntosAzul} a ${puntosRojo}`;
 
-    // 2. Determinamos el bando ganador y formateamos el texto
+    // 1. CAPTURAR DATOS ANTES Y DESPUÉS PARA EL LEVEL UP
+    let datosSesion = obtenerCookieUsuario();
+    
+    // Si no hay usuario logueado, creamos un objeto temporal vacío para que no rompa el código
+    if (!datosSesion) {
+        datosSesion = { usuario: "Invitado", victorias: 0, derrotas: 0, empates: 0, puntos: 0, logeado: false };
+    }
+
+    // Guardamos la foto del estado "Viejo" antes de mutar la cookie
+    const v_ant = datosSesion.victorias || 0;
+    const d_ant = datosSesion.derrotas || 0;
+    const e_ant = datosSesion.empates || 0;
+    const p_ant = datosSesion.puntos || 0;
+    
+    const partidas_ant = v_ant + d_ant + e_ant;
+    const winrate_ant = partidas_ant > 0 ? Math.round((v_ant / partidas_ant) * 100) : 0;
+
+    // Variables para el bloque visual que se va a pintar
+    let lineaEstadisticaHTML = "";
+
+    // 2. PROCESAR EL DESENLACE Y APLICAR SUMAS
     if (puntosAzul > puntosRojo) {
         claseResultado = "resultado-victoria";
+        tituloHTML = Array.from("VICTORIA").map(letra => `<span>${letra}</span>`).join("");
+            
+        if (datosSesion.logeado) {
+            datosSesion.victorias = v_ant + 1;
+            datosSesion.puntos = p_ant + 3;
+        }
         
-        // Convertimos "¡VICTORIA!" en letras individuales envueltas en spans para la animación en fila
-        const textoVictoria = "VICTORIA";
-        tituloHTML = Array.from(textoVictoria)
-            .map(letra => `<span>${letra}</span>`)
-            .join("");
+        // Cálculos post-mutación
+        const partidas_new = datosSesion.victorias + d_ant + e_ant;
+        const winrate_new = Math.round((datosSesion.victorias / partidas_new) * 100);
+
+        lineaEstadisticaHTML = `
+            <div class="fila-rpg-stat"><span>victorias</span> <span>${v_ant}</span> <span class="flecha-rpg">➔</span> <span class="stat-sube">${datosSesion.victorias}</span></div>
+            <div class="fila-rpg-stat"><span>winrate</span> <span>${winrate_ant}%</span> <span class="flecha-rpg">➔</span> <span class="stat-sube">${winrate_new}%</span></div>
+            <div class="fila-rpg-stat"><span>puntos</span> <span>${p_ant}</span> <span class="flecha-rpg">➔</span> <span class="stat-sube">${datosSesion.puntos}</span></div>
+        `;
             
     } else if (puntosRojo > puntosAzul) {
         claseResultado = "resultado-derrota";
-        tituloHTML = "DERROTA"; // En derrota el texto no salta, solo pulsa el brillo rojo
+        tituloHTML = "DERROTA";
+        
+        if (datosSesion.logeado) {
+            datosSesion.derrotas = d_ant + 1;
+        }
+
+        const partidas_new = v_ant + datosSesion.derrotas + e_ant;
+        const winrate_new = Math.round((v_ant / partidas_new) * 100);
+
+        lineaEstadisticaHTML = `
+            <div class="fila-rpg-stat"><span>derrotas</span> <span>${d_ant}</span> <span class="flecha-rpg">➔</span> <span class="stat-baja">${datosSesion.derrotas}</span></div>
+            <div class="fila-rpg-stat"><span>winrate</span> <span>${winrate_ant}%</span> <span class="flecha-rpg">➔</span> <span class="stat-baja">${winrate_new}%</span></div>
+            <div class="fila-rpg-stat"><span>puntos</span> <span>${p_ant}</span> <span class="flecha-rpg">➔</span> <span class="stat-neutral">${p_ant}</span></div>
+        `;
     } else {
         claseResultado = "resultado-empate";
         tituloHTML = "EMPATE";
+        
+        if (datosSesion.logeado) {
+            datosSesion.empates = e_ant + 1;
+            datosSesion.puntos = p_ant + 1;
+        }
+
+        const partidas_new = v_ant + d_ant + datosSesion.empates;
+        const winrate_new = Math.round((v_ant / partidas_new) * 100);
+        
+        // Si el winrate baja por el empate se pinta rojo, si sube azul, si se queda igual neutral
+        const claseWinrateEmpate = winrate_new > winrate_ant ? "stat-sube" : (winrate_new < winrate_ant ? "stat-baja" : "stat-neutral");
+
+        lineaEstadisticaHTML = `
+            <div class="fila-rpg-stat"><span>empates</span> <span>${e_ant}</span> <span class="flecha-rpg">➔</span> <span class="stat-neutral">${datosSesion.empates}</span></div>
+            <div class="fila-rpg-stat"><span>winrate</span> <span>${winrate_ant}%</span> <span class="flecha-rpg">➔</span> <span class="${claseWinrateEmpate}">${winrate_new}%</span></div>
+            <div class="fila-rpg-stat"><span>puntos</span> <span>${p_ant}</span> <span class="flecha-rpg">➔</span> <span class="stat-sube">${datosSesion.puntos}</span></div>
+        `;
     }
 
-        // 3. Creamos el contenedor del cartel de forma dinámica con tres botones
+    // Guardar los datos si el usuario está registrado
+    if (datosSesion.logeado) {
+        // 1. Guardamos en su cookie de sesión activa
+        guardarCookieUsuario(datosSesion);
+
+        // 2. NUEVO: Buscamos y actualizamos su récord en la lista global de registrados del ranking
+        let usuariosRegistrados = JSON.parse(localStorage.getItem("usuarios_registrados")) || [];
+        const idx = usuariosRegistrados.findIndex(u => u.usuario.toLowerCase() === datosSesion.usuario.toLowerCase());
+        if (idx !== -1) {
+            usuariosRegistrados[idx].victorias = datosSesion.victorias;
+            usuariosRegistrados[idx].derrotas = datosSesion.derrotas;
+            usuariosRegistrados[idx].empates = datosSesion.empates;
+            usuariosRegistrados[idx].puntos = datosSesion.puntos;
+            localStorage.setItem("usuarios_registrados", JSON.stringify(usuariosRegistrados));
+            console.log(`[Ranking Global] Estadísticas sincronizadas para ${datosSesion.usuario}`);
+        }
+    }
+
+    // 3. INYECTAR PANEL DE ESTADÍSTICAS RPG EN EL CARTEL FINAL
     const cartel = document.createElement("div");
     cartel.className = "cartel-final";
     
     cartel.innerHTML = `
         <h1 class="${claseResultado}">${tituloHTML}</h1>
-        <p>${subtitulo}</p>
+        <p class="marcador-texto">${subtitulo}</p>
+        
+        <!-- BLOQUE DE SUBIDA DE NIVEL RPG -->
+        <div class="contenedor-stats-rpg">
+            <h3 class="titulo-stats-rpg">Estadísticas</h3>
+            <div class="tabla-stats-rpg">
+                ${lineaEstadisticaHTML}
+            </div>
+        </div>
+
         <div class="contenedor-botones-final">
             <button class="btn-final btn-volver" onclick="window.location.href='index.html'">Inicio</button>
             <button class="btn-reiniciar" onclick="window.location.reload()">Jugar otra vez</button>
@@ -398,9 +485,35 @@ function evaluarFinPartida(puntosAzul, puntosRojo) {
         </div>
     `;
 
-
-    // 4. Lo inyectamos al cuerpo de la página
     document.body.appendChild(cartel);
-    console.log(`Partida terminada con animaciones de cartel activas.`);
 }
 
+
+// --- FUNCIONES AUXILIARES PARA PASAR AL FINAL DEL ARCHIVO LOGICAMINIJUEGO.JS ---
+
+function obtenerCookieUsuario() {
+    const nombreCookie = "usuario_session=";
+    const cookiesSeparadas = document.cookie.split(';');
+    
+    for (let i = 0; i < cookiesSeparadas.length; i++) {
+        let c = cookiesSeparadas[i].trim();
+        if (c.indexOf(nombreCookie) === 0) {
+            try {
+                const jsonTexto = decodeURIComponent(c.substring(nombreCookie.length, c.length));
+                return JSON.parse(jsonTexto);
+            } catch (error) {
+                console.error("Error al procesar la cookie en el minijuego:", error);
+                return null;
+            }
+        }
+    }
+    return null;
+}
+
+function guardarCookieUsuario(objetoUsuario) {
+    const diasExpiracion = 7;
+    const d = new Date();
+    d.setTime(d.getTime() + (diasExpiracion * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = "usuario_session=" + encodeURIComponent(JSON.stringify(objetoUsuario)) + ";" + expires + ";path=/";
+}

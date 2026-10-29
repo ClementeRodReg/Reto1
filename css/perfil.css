@@ -166,7 +166,6 @@ input:focus {
 }
 
 /* --- ALINEACIÓN INTERNA DEL FORMULARIO (AVATAR A LA IZQUIERDA) --- */
-
 /* Divide el interior del formulario en 2 columnas */
 .cuerpo-formulario-rpg {
     display: flex;

@@ -135,21 +135,32 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     }
 }
 
-/* 
-   Aplicamos retrasos de tiempo individuales utilizando :nth-child.
-   Como el ángel tarda 3s, el primer botón espera 3 segundos exactos.
-*/
+/* ==========================================================================
+   RETRASOS SECUENCIALES DE BOTONES DEL MENÚ (ARREGLO LOGUEADO)
+   ========================================================================== */
+
+/* Si NO estás logueado (Hay 3 botones en total): */
 .containerBotones button:nth-child(1) {
-    animation-delay: 3s; /* Aparece justo cuando el ángel se detiene */
+    animation-delay: 3s;   /* Aparece Inicio / Registro o Jugar */
 }
 
 .containerBotones button:nth-child(2) {
-    animation-delay: 3.4s; /* Aparece 400 milisegundos después que el primero */
+    animation-delay: 3.4s; /* Aparece Ranking o Perfil */
 }
 
 .containerBotones button:nth-child(3) {
-    animation-delay: 3.8s; /* Aparece 400 milisegundos después que el primero */
+    animation-delay: 3.8s; /* Aparece Normas (no logueado) o Ranking (logueado) */
 }
+
+/* NUEVO: Si SÍ estás logueado (Se inyectan botones y ahora hay 4 o 5 en total): */
+.containerBotones button:nth-child(4) {
+    animation-delay: 4.2s; /* Aparece Ranking o Normas según la combinación */
+}
+
+.containerBotones button:nth-child(5) {
+    animation-delay: 4.6s; /* Garantiza que Normas sea el último en caer con suavidad */
+}
+
 
 /* Definición de la animación para materializar los botones */
 @keyframes aparecerBoton {
@@ -396,70 +407,125 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
 }
 
 /* ==========================================================================
-   PINCELADAS FINALES DE DISEÑO - REAJUSTE SEGURO DE ESTILOS
+   ESTILOS CONTROLADOS Y AISLADOS PARA LA INTERFAZ DE AUTENTICACIÓN
    ========================================================================== */
 
-/* Forzar que los títulos h2 internos usen fuente normal sin negrita */
-#modalAuth h2#tituloAuth {
-    font-size: 36px;
-    font-weight: 400;
-    text-shadow: 2px 2px 0px #000000;
+/* Fondo oscurecido flotante general */
+.modal-ff-flotante {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-/* Quitar la línea divisoria blanca/gris horizontal del título */
-#modalAuth .cabecera-modal-auth,
-#modalAuth .cabecera-modal {
-    border-bottom: none;
-    padding-bottom: 0;
+/* Contenedor principal: Hereda tu diseño base del juego */
+.contenido-modal-retro {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: linear-gradient(180deg, #000066 0%, #000033 40%, #000011 100%);
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 3px #666666, 0 20px 40px rgba(0, 0, 0, 0.9);
+    border-radius: 8px;
+    padding: 30px;
+    animation: aparecerCartel 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Cabecera limpia y estilizada sin bordes divisorios */
+.cabecera-modal-auth {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 25px;
 }
 
-/* Texto "¿Qué deseas hacer, aventurero?" con más tamaño y espaciado */
-#modalAuth .texto-indicador {
-    font-size: 29px;
-    letter-spacing: 2px;
+.cabecera-modal-auth h2 {
+    font-size: 36px !important;
+    font-weight: 400 !important;
     text-shadow: 2px 2px 0px #000000;
+    color: #ffffff;
+    margin: 0;
 }
 
-/* Pinceladas en las etiquetas de texto de los inputs */
-#modalAuth .campo-formulario label {
+/* Botón X de Cierre */
+.cabecera-modal-auth .btn-cerrar-retro {
+    background: transparent !important;
+    border: none !important;
+    color: #ff006e !important;
+    font-size: 32px !important;
+    cursor: pointer;
+    font-family: FFVIII, sans-serif;
+}
+.cabecera-modal-auth .btn-cerrar-retro:hover { color: #ffffff !important; }
+
+/* Distribución del contenido central (Alineación perfecta) */
+.cuerpo-formulario-rpg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Columna del Bloque de Inputs */
+.seccion-inputs-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Cada fila del formulario: Junta la etiqueta y su caja */
+.campo-formulario-auth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.campo-formulario-auth label {
     font-size: 26px;
     letter-spacing: 1.5px;
     text-shadow: 2px 2px 0px #000000;
+    color: #ffffff;
+    text-align: right;
+    width: 140px; /* Ancho fijo para alinear perfectamente los inputs */
 }
 
-/* --- REAJUSTE DE DIMENSIONES DEL AVATAR --- */
-#modalAuth .seccion-avatar-interna {
-    flex: 0 0 180px;
+/* CAJAS DE TEXTO REALES (Evitamos selectores genéricos dañinos) */
+.seccion-inputs-auth input[type="text"],
+.seccion-inputs-auth input[type="password"] {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border: 2px solid #5d64a4 !important;
+    border-radius: 4px !important;
+    color: #ffffff !important;
+    font-family: FFVIII, sans-serif !important;
+    font-size: 22px !important;
+    padding: 8px 12px !important;
+    outline: none !important;
+    width: 320px !important; /* Longitud estética y contenida */
+    height: auto !important;
+}
+.seccion-inputs-auth input:focus {
+    border-color: #3a86ff !important;
+    box-shadow: 0 0 8px rgba(58, 134, 255, 0.5) !important;
 }
 
-#modalAuth .marco-avatar {
-    position: relative;
-    width: 160px; /* Escalado visual visiblemente más grande solicitado */
-    height: 160px;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(24, 25, 58, 0.4) 100%);
-    border: 2px solid #5d64a4;
-    border-radius: 6px;
-    cursor: pointer;
-    overflow: hidden;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
-    margin-left: 20px; /* Desplazado un poco a la derecha */
-}
-
-#modalAuth .marco-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-}
-
-/* ==========================================================================
-   RESTAURACIÓN RETRO DE BOTONES DE LA MODAL (CON X ROJA ORIGINAL)
-   ========================================================================= */
-
-/* Fuerza a los botones de acción a usar el diseño de Index (Excluyendo la X) */
-#modalAuth button:not(.btn-cerrar-retro),
-#modalAuth .boton,
-#modalAuth .btn-secundario {
+/* --- BOTONES DE ACCIÓN RETRO (PROPIEDADES COPIADAS DE INDEX) --- */
+.boton-retro {
     background: rgba(0, 0, 0, 0.6) !important; 
     border: 2px solid #cccccc !important;
     color: #cccccc !important;
@@ -469,85 +535,60 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     cursor: pointer !important;
     border-radius: 5px !important;
     transition: all 0.2s ease !important;
-    text-align: center !important;
-    width: auto !important;
-    height: auto !important;
-    opacity: 1 !important;
-    display: inline-block !important;
 }
-
-/* Efecto hover retro para los botones de acción */
-#modalAuth button:not(.btn-cerrar-retro):hover,
-#modalAuth .boton:hover {
+.boton-retro:hover {
     background: rgba(255, 255, 255, 0.15) !important;
     border-color: #ffffff !important;
     color: #ffffff !important;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
-    transform: scale(1.03) !important;
+    transform: scale(1.03);
 }
-
-/* El botón de 'Atrás' un poco más oscuro (btn-secundario) */
-#modalAuth .btn-secundario {
+.btn-retro-secundario {
     border-color: #5d64a4 !important;
     color: #a0a5d0 !important;
     background: rgba(0, 0, 0, 0.4) !important;
 }
 
-#modalAuth .btn-secundario:hover {
-    background: rgba(74, 85, 104, 0.3) !important;
-    border-color: #cbd5e0 !important;
-    color: #ffffff !important;
+/* Barra inferior que contiene los botones Atrás y Aceptar */
+.barra-botones-auth {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 15px;
+    width: 100%;
 }
 
-/* --- RESTAURACIÓN INTACTA DE LA X ROJA DE CIERRE --- */
-#modalAuth button.btn-cerrar-retro {
-    background: transparent !important;
-    border: none !important;
-    color: #ff006e !important;
-    font-size: 32px !important;
-    cursor: pointer !important;
-    font-family: FFVIII, sans-serif !important;
-    box-shadow: none !important;
-    transform: none !important;
-    padding: 0 !important;
-    width: auto !important;
-    height: auto !important;
-    display: inline-block !important;
-    transition: color 0.2s !important;
+/* --- COLUMNA DE AVATAR (GRANDE Y BIEN POSICIONADO) --- */
+.seccion-avatar-auth {
+    flex: 0 0 160px;
 }
-
-#modalAuth button.btn-cerrar-retro:hover {
-    color: #ffffff !important;
-    background: transparent !important;
+.marco-avatar-auth {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(24, 25, 58, 0.4) 100%);
+    border: 2px solid #5d64a4;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
 }
-
-/* --- DETALLES DE TEXTOS Y AJUSTES DE FUENTE --- */
-
-/* Quitar la negrita nativa de los títulos */
-#modalAuth h2#tituloAuth {
-    font-size: 36px !important;
-    font-weight: 400 !important;
-    text-shadow: 2px 2px 0px #000000;
+.marco-avatar-auth img { width: 100%; height: 100%; object-fit: fill; }
+.indicador-cambio-auth {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    background: rgba(0, 0, 0, 0.75); font-size: 11px; text-align: center;
+    color: #ffd700; padding: 2px 0; opacity: 0; transition: opacity 0.2s;
 }
+.marco-avatar-auth:hover .indicador-cambio-auth { opacity: 1; }
 
-/* Quitar la línea divisoria blanca/gris horizontal de abajo del título */
-#modalAuth .cabecera-modal-auth,
-#modalAuth .cabecera-modal {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 25px !important;
+/* Panel desplegable de catálogo */
+.grid-galeria-auth {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 10px; max-height: 150px; overflow-y: auto; padding: 10px;
+    background: rgba(0, 0, 0, 0.5); border-radius: 4px; border: 1px solid rgba(254, 254, 254, 0.1);
 }
+.carta-miniatura-auth {
+    width: 100%; aspect-ratio: 1; object-fit: cover;
+    border: 2px solid #5d64a4; border-radius: 4px; cursor: pointer;
+}
+.carta-miniatura-auth:hover { border-color: #ffd700; transform: scale(1.05); }
 
-/* Texto indicador "¿Qué deseas hacer, aventurero?" */
-#modalAuth .texto-indicador {
-    font-size: 29px !important;
-    letter-spacing: 2px !important;
-    text-shadow: 2px 2px 0px #000000;
-}
-
-/* Etiquetas (Labels) de Usuario, Contraseña y Confirmar */
-#modalAuth .campo-formulario label {
-    font-size: 26px !important;
-    letter-spacing: 1.5px !important;
-    text-shadow: 2px 2px 0px #000000;
-}

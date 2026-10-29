@@ -27,51 +27,50 @@
 
     </div>
 
-    <!-- VENTANA MODAL FLOTANTE (Oculta por defecto con display: none) -->
+    <!-- VENTANA MODAL FLOTANTE DEFINITIVA -->
     <div id="modalAuth" class="modal-ff-flotante" style="display: none;">
-        <div class="contenido-modal-retro">
+        <div class="contenido-modal-retro cuadro-ff7">
             
-            <!-- Cabecera de la Ventana -->
+            <!-- Cabecera de la Ventana sin mezclar clases antiguas -->
             <div class="cabecera-modal-auth">
                 <h2 id="tituloAuth">Acceso al Sistema</h2>
                 <button id="cerrarModalAuth" class="btn-cerrar-retro">X</button>
             </div>
 
-            <!-- FASE 1: Menú Inicial (Botones Lado a Lado) -->
+            <!-- FASE 1: Menú Inicial (Botones Selección) -->
             <div id="authMenuInicial" class="filas-auth" style="display: flex;">
                 <p class="texto-indicador">¿Qué deseas hacer, aventurero?</p>
                 <div class="contenedor-opciones-lado">
-                    <button id="btnElegirLogin" class="boton" style="padding: 12px 30px;">Iniciar Sesión</button>
-                    <button id="btnElegirRegistro" class="boton" style="padding: 12px 30px;">Registrarse</button>
+                    <button id="btnElegirLogin" class="boton-retro">Iniciar Sesión</button>
+                    <button id="btnElegirRegistro" class="boton-retro">Registrarse</button>
                 </div>
             </div>
 
-                        <!-- FASE 2: Formulario Dinámico -->
+            <!-- FASE 2: Formulario Aislado Dinámico -->
             <form id="formAuth" class="filas-auth" style="display: none;">
-                <!-- Añadido style="justify-content: center;" para centrar inputs en Login -->
-                <div class="cuerpo-formulario-rpg" style="justify-content: center;">
+                <div class="cuerpo-formulario-rpg">
                     
-                    <!-- Subsección Izquierda: Avatar (Solo para Registro) -->
-                    <div id="seccionAvatarAuth" class="seccion-avatar-interna" style="display: none;">
-                        <div class="marco-avatar" id="selectorAvatarAuth" title="Haz clic para cambiar tu avatar">
+                    <!-- Columna Izquierda: Avatar (Exclusivo de Registro) -->
+                    <div id="seccionAvatarAuth" class="seccion-avatar-auth" style="display: none;">
+                        <div class="marco-avatar-auth" id="selectorAvatarAuth" title="Haz clic para cambiar tu avatar">
                             <img id="imagenAvatarAuth" src="../img/cartas_triple_triad/card_1.png" alt="Avatar">
-                            <div class="indicador-cambio">CAMBIAR</div>
+                            <div class="indicador-cambio-auth">CAMBIAR</div>
                         </div>
                     </div>
 
-                    <!-- Subsección Derecha: Inputs -->
-                    <div class="seccion-inputs-interna">
-                        <div class="campo-formulario">
+                    <!-- Columna Derecha: Inputs Reales -->
+                    <div class="seccion-inputs-auth">
+                        <div class="campo-formulario-auth">
                             <label for="authUsuario">Usuario:</label>
                             <input type="text" id="authUsuario" name="usuario" autocomplete="off">
                         </div>
 
-                        <div class="campo-formulario">
+                        <div class="campo-formulario-auth">
                             <label for="authPassword">Contraseña:</label>
                             <input type="password" id="authPassword" name="password">
                         </div>
 
-                        <div class="campo-formulario" id="campoConfirmarPassAuth" style="display: none;">
+                        <div class="campo-formulario-auth" id="campoConfirmarPassAuth" style="display: none;">
                             <label for="authConfirmarPassword">Confirmar:</label>
                             <input type="password" id="authConfirmarPassword" name="confirmarPassword">
                         </div>
@@ -79,17 +78,17 @@
 
                 </div>
 
-                <!-- Botones Inferiores del Formulario -->
-                <div class="contenedor-botones-formulario">
-                    <button type="button" id="btnVolverMenuAuth" class="boton btn-secundario">Atrás</button>
-                    <button type="submit" id="btnAceptarAuth" class="boton">Aceptar</button>
+                <!-- Barra de Control Inferior (Fuera del bloque de inputs) -->
+                <div class="barra-botones-auth">
+                    <button type="button" id="btnVolverMenuAuth" class="boton-retro btn-retro-secundario">Atrás</button>
+                    <button type="submit" id="btnAceptarAuth" class="boton-retro">Aceptar</button>
                 </div>
             </form>
 
-            <!-- SUB-MODAL INTERNA: Selector de Cartas -->
+            <!-- SUB-MODAL INTERNA: Panel Catálogo de Cartas -->
             <div id="galeriaAvataresAuth" class="filas-auth" style="display: none;">
                 <p class="texto-mini-indicador">Selecciona tu Carta de Avatar:</p>
-                <div id="rejillaAvataresAuth" class="grid-galeria-modal-auth"></div>
+                <div id="rejillaAvataresAuth" class="grid-galeria-auth"></div>
             </div>
 
         </div>
