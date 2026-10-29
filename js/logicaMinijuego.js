@@ -321,9 +321,6 @@ function ejecutarCombate(fila, columna, casillaActual) {
 
 /**
  * Cuenta las cartas totales en la mano y el tablero para actualizar el marcador con las normas oficiales
- */
-/**
- * Cuenta las cartas totales en la mano y el tablero para actualizar el marcador con las normas oficiales
  * e inspecciona si el tablero se ha llenado para declarar el Fin de Partida.
  */
 function actualizarMarcador() {

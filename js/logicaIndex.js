@@ -1,6 +1,10 @@
 import { mostrarVentanaNormas } from "./normas.js";
+import { inicializarModalAuth } from "./auth.js"; // <-- NUEVA IMPORTACIÓN
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Inicializamos la nueva ventana de Login/Registro integrada
+    inicializarModalAuth(); 
+    
     const botones = document.querySelectorAll(".containerBotones button");
     let indexActual = 0;
 

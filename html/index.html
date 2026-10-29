@@ -27,5 +27,73 @@
 
     </div>
 
+    <!-- VENTANA MODAL FLOTANTE (Oculta por defecto con display: none) -->
+    <div id="modalAuth" class="modal-ff-flotante" style="display: none;">
+        <div class="contenido-modal-retro">
+            
+            <!-- Cabecera de la Ventana -->
+            <div class="cabecera-modal-auth">
+                <h2 id="tituloAuth">Acceso al Sistema</h2>
+                <button id="cerrarModalAuth" class="btn-cerrar-retro">X</button>
+            </div>
+
+            <!-- FASE 1: Menú Inicial (Botones Lado a Lado) -->
+            <div id="authMenuInicial" class="filas-auth" style="display: flex;">
+                <p class="texto-indicador">¿Qué deseas hacer, aventurero?</p>
+                <div class="contenedor-opciones-lado">
+                    <button id="btnElegirLogin" class="boton" style="padding: 12px 30px;">Iniciar Sesión</button>
+                    <button id="btnElegirRegistro" class="boton" style="padding: 12px 30px;">Registrarse</button>
+                </div>
+            </div>
+
+                        <!-- FASE 2: Formulario Dinámico -->
+            <form id="formAuth" class="filas-auth" style="display: none;">
+                <!-- Añadido style="justify-content: center;" para centrar inputs en Login -->
+                <div class="cuerpo-formulario-rpg" style="justify-content: center;">
+                    
+                    <!-- Subsección Izquierda: Avatar (Solo para Registro) -->
+                    <div id="seccionAvatarAuth" class="seccion-avatar-interna" style="display: none;">
+                        <div class="marco-avatar" id="selectorAvatarAuth" title="Haz clic para cambiar tu avatar">
+                            <img id="imagenAvatarAuth" src="../img/cartas_triple_triad/card_1.png" alt="Avatar">
+                            <div class="indicador-cambio">CAMBIAR</div>
+                        </div>
+                    </div>
+
+                    <!-- Subsección Derecha: Inputs -->
+                    <div class="seccion-inputs-interna">
+                        <div class="campo-formulario">
+                            <label for="authUsuario">Usuario:</label>
+                            <input type="text" id="authUsuario" name="usuario" autocomplete="off">
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="authPassword">Contraseña:</label>
+                            <input type="password" id="authPassword" name="password">
+                        </div>
+
+                        <div class="campo-formulario" id="campoConfirmarPassAuth" style="display: none;">
+                            <label for="authConfirmarPassword">Confirmar:</label>
+                            <input type="password" id="authConfirmarPassword" name="confirmarPassword">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botones Inferiores del Formulario -->
+                <div class="contenedor-botones-formulario">
+                    <button type="button" id="btnVolverMenuAuth" class="boton btn-secundario">Atrás</button>
+                    <button type="submit" id="btnAceptarAuth" class="boton">Aceptar</button>
+                </div>
+            </form>
+
+            <!-- SUB-MODAL INTERNA: Selector de Cartas -->
+            <div id="galeriaAvataresAuth" class="filas-auth" style="display: none;">
+                <p class="texto-mini-indicador">Selecciona tu Carta de Avatar:</p>
+                <div id="rejillaAvataresAuth" class="grid-galeria-modal-auth"></div>
+            </div>
+
+        </div>
+    </div>
+
   </body>
 </html>
