@@ -19,10 +19,10 @@ body{
 }
 
 .menu-principal {
-    position: relative; /* ActÃºa como base para posicionar los botones */
-    z-index: 2;         /* Mantiene todo el menÃº por encima del Ã¡ngel */
+    position: relative; /* Actúa como base para posicionar los botones */
+    z-index: 2;         /* Mantiene todo el menú por encima del ángel */
     display: inline-block; /* Se ajusta exactamente al ancho del texto */
-    margin-top: 50px;   /* Ajusta la distancia del tÃ­tulo con el borde superior de la pantalla */
+    margin-top: 50px;   /* Ajusta la distancia del título con el borde superior de la pantalla */
 }
 
 header {
@@ -30,37 +30,37 @@ header {
     position: relative;
 }
 
-/* Estilo base para cada letra del tÃ­tulo */
+/* Estilo base para cada letra del título */
 header span {
     display: inline-block;
     opacity: 0; /* Empiezan invisibles */
     transform: scale(0.7); /* Un sutil efecto de escala al aparecer */
     
     /* 
-       AnimaciÃ³n rÃ¡pida de 0.15 segundos.
+       Animación rápida de 0.15 segundos.
        'forwards' asegura que se queden visibles al terminar.
     */
     animation: aparecerLetra 0.15s ease-out forwards; 
 }
 
 /* 
-   Retrasos secuenciales (el Ã¡ngel termina a los 3s).
+   Retrasos secuenciales (el ángel termina a los 3s).
    Cada letra aparece con 0.05s (50ms) de diferencia con la anterior.
 */
 header span:nth-child(1)  { animation-delay: 3.00s; } /* T */
 header span:nth-child(2)  { animation-delay: 3.05s; } /* r */
-header span:nth-child(3)  { animation-delay: 3.10s; } /* Ä± (con cristal) */
+header span:nth-child(3)  { animation-delay: 3.10s; } /* ı (con cristal) */
 header span:nth-child(4)  { animation-delay: 3.15s; } /* p */
 header span:nth-child(5)  { animation-delay: 3.20s; } /* l */
 header span:nth-child(6)  { animation-delay: 3.25s; } /* e */
 header span:nth-child(7)  { animation-delay: 3.30s; } /* Espacio */
 header span:nth-child(8)  { animation-delay: 3.35s; } /* T */
 header span:nth-child(9)  { animation-delay: 3.40s; } /* r */
-header span:nth-child(10) { animation-delay: 3.45s; } /* Ä± */
+header span:nth-child(10) { animation-delay: 3.45s; } /* ı */
 header span:nth-child(11) { animation-delay: 3.50s; } /* a */
 header span:nth-child(12) { animation-delay: 3.55s; } /* d */
 
-/* AnimaciÃ³n para revelar la letra */
+/* Animación para revelar la letra */
 @keyframes aparecerLetra {
     to {
         opacity: 1;
@@ -71,13 +71,13 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
 .containerBotones {
     position: absolute;
     
-    /* Empuja los botones hacia abajo (pasando el tÃ­tulo) y hacia la derecha */
-    top: 330px;       /* Ajusta este valor para subirlos o bajarlos */
-    right: 100px;     /* Ajusta este valor para moverlos mÃ¡s a la derecha o izquierda */
+    /* Empuja los botones hacia abajo (pasando el título) y hacia la derecha */
+    top: 250px;       /* Ajusta este valor para subirlos o bajarlos */
+    right: 70px;     /* Ajusta este valor para moverlos más a la derecha o izquierda */
     
     display: flex;
     flex-direction: column; /* Coloca los botones uno debajo del otro estilo FF */
-    gap: 30px;              /* SeparaciÃ³n entre los botones */
+    gap: 30px;              /* Separación entre los botones */
 }
 
 /* Estilo para que los botones parezcan de Final Fantasy */
@@ -87,27 +87,27 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     color: #cccccc;
     font-family: FFVIII;
     font-size: 30px;
-    padding: 8px 20px; /* Restaurado a un padding normal y simÃ©trico */
+    padding: 8px 20px; /* Restaurado a un padding normal y simétrico */
     cursor: pointer;
     text-align: left;
     transition: all 0.2s ease;
     outline: none; 
 
-    position: relative; /* Sigue siendo necesario para que la mano se guÃ­e por este botÃ³n */
+    position: relative; /* Sigue siendo necesario para que la mano se guíe por este botón */
     opacity: 0; 
     animation: aparecerBoton 0.7s ease-out forwards;
 }
 
-/* Cuando el botÃ³n tiene el foco, la mano aparece FUERA a la izquierda */
+/* Cuando el botón tiene el foco, la mano aparece FUERA a la izquierda */
 .containerBotones button:focus::before {
     content: "";
     position: absolute;
     
-    /* Al usar un valor negativo, sacamos la mano por completo del borde izquierdo del botÃ³n */
-    left: -45px; /* Ajusta este valor si quieres alejarla mÃ¡s o acercarla al borde */
+    /* Al usar un valor negativo, sacamos la mano por completo del borde izquierdo del botón */
+    left: -45px; /* Ajusta este valor si quieres alejarla más o acercarla al borde */
     top: 50%;
     
-    /* Configura el tamaÃ±o de tu imagen de la mano */
+    /* Configura el tamaño de tu imagen de la mano */
     width: 35px;        
     height: 20px;
     
@@ -116,19 +116,19 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     background-size: contain;
     background-repeat: no-repeat;
     
-    /* Centrado vertical y animaciÃ³n de flotaciÃ³n */
+    /* Centrado vertical y animación de flotación */
     animation: flotarMano 0.6s infinite alternate ease-in-out;
 }
 
-/* Cambiamos el comportamiento de hover para que tambiÃ©n aplique el focus (retrocompatibilidad con ratÃ³n) */
+/* Cambiamos el comportamiento de hover para que también aplique el focus (retrocompatibilidad con ratón) */
 .containerBotones button:hover {
-    background: rgba(255, 255, 255, 0.1); /* Efecto sutil al pasar el ratÃ³n */
+    background: rgba(255, 255, 255, 0.1); /* Efecto sutil al pasar el ratón */
 }
 
-/* Nueva animaciÃ³n: Efecto de flotaciÃ³n horizontal (izquierda-derecha) clÃ¡sico de FF */
+/* Nueva animación: Efecto de flotación horizontal (izquierda-derecha) clásico de FF */
 @keyframes flotarMano {
     0% {
-        transform: translate(0, -50%); /* PosiciÃ³n inicial centrada verticalmente */
+        transform: translate(0, -50%); /* Posición inicial centrada verticalmente */
     }
     100% {
         transform: translate(-6px, -50%); /* Se desplaza un poco a la izquierda simulando el apuntado */
@@ -137,21 +137,21 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
 
 /* 
    Aplicamos retrasos de tiempo individuales utilizando :nth-child.
-   Como el Ã¡ngel tarda 3s, el primer botÃ³n espera 3 segundos exactos.
+   Como el ángel tarda 3s, el primer botón espera 3 segundos exactos.
 */
 .containerBotones button:nth-child(1) {
-    animation-delay: 3s; /* Aparece justo cuando el Ã¡ngel se detiene */
+    animation-delay: 3s; /* Aparece justo cuando el ángel se detiene */
 }
 
 .containerBotones button:nth-child(2) {
-    animation-delay: 3.4s; /* Aparece 400 milisegundos despuÃ©s que el primero */
+    animation-delay: 3.4s; /* Aparece 400 milisegundos después que el primero */
 }
 
 .containerBotones button:nth-child(3) {
-    animation-delay: 3.8s; /* Aparece 400 milisegundos despuÃ©s que el primero */
+    animation-delay: 3.8s; /* Aparece 400 milisegundos después que el primero */
 }
 
-/* DefiniciÃ³n de la animaciÃ³n para materializar los botones */
+/* Definición de la animación para materializar los botones */
 @keyframes aparecerBoton {
     0% {
         opacity: 0;
@@ -159,7 +159,7 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     }
     100% {
         opacity: 1;
-        transform: translateY(0); /* Vuelve a su posiciÃ³n original */
+        transform: translateY(0); /* Vuelve a su posición original */
     }
 }
 
@@ -176,24 +176,24 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     pointer-events: none;
 
     /* 
-       AÃ±adimos la animaciÃ³n:
+       Añadimos la animación:
        - 'aparecerDesdeIzquierda': nombre del @keyframes.
-       - '1.5s': duraciÃ³n de la animaciÃ³n (ajÃºstala a tu gusto).
-       - 'ease-out': hace que empiece rÃ¡pido y frene suavemente al llegar.
-       - 'forwards': congela la animaciÃ³n en su estado final para que no desaparezca.
+       - '1.5s': duración de la animación (ajústala a tu gusto).
+       - 'ease-out': hace que empiece rápido y frene suavemente al llegar.
+       - 'forwards': congela la animación en su estado final para que no desaparezca.
     */
     animation: aparecerDesdeIzquierda 3s ease-out forwards; 
 }
 
-/* DefiniciÃ³n de la animaciÃ³n de Final Fantasy */
+/* Definición de la animación de Final Fantasy */
 @keyframes aparecerDesdeIzquierda {
     0% {
-        /* Estado inicial: 100px mÃ¡s a la izquierda, completamente invisible y un pelÃ­n mÃ¡s pequeÃ±o */
+        /* Estado inicial: 100px más a la izquierda, completamente invisible y un pelín más pequeño */
         transform: translate(-100%, -50%); 
         opacity: 0;
     }
     100% {
-        /* Estado final: Tu posiciÃ³n original exacta y la opacidad que querÃ­as */
+        /* Estado final: Tu posición original exacta y la opacidad que querías */
         transform: translate(-50%, -50%); 
         opacity: 0.7;
     }
@@ -205,38 +205,39 @@ header span:nth-child(12) { animation-delay: 3.55s; } /* d */
     display: inline-block;
 }
 
-/* El GIF animado que harÃ¡ de punto */
+/* El GIF animado que hará de punto */
 .i-animada::after {
     content: "";
     position: absolute;
     
-    /* Configura el tamaÃ±o del punto animado */
+    /* Configura el tamaño del punto animado */
     width: 50px;  
     height: 50px;
     
-    /* Carga aquÃ­ la ruta del GIF */
+    /* Carga aquí la ruta del GIF */
     background-image: url('../img/crystal-spinning.gif');
     background-size: contain;
     background-repeat: no-repeat;
     
     /* Posicionamiento: lo subimos por encima de la letra */
-    top: 20px;  /* Ajustar este valor segÃºn el tamaÃ±o de la fuente */
-    left: 50%;
+    top: 20px;  /* Ajustar este valor según el tamaño de la fuente */
+    left: 49%;
     transform: translateX(-50%);
 }
+
 .contenedorPadre{
     width: 50%;
     height: 50%;
     display: flex;
-    
-
 }
+
 .Principal{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
+
 .contenedorLogin{
 width: 50%;
 display: flex;
@@ -254,19 +255,15 @@ display: flex;
 align-items: center;
 flex-direction: column;
 margin: 0.1%;
-
-
 }
-input{
 
+input{
     border: solid grey 2px;
     border-radius: 10px;
 }
+
 div input{
-width: 80%;
-
-
-
+    width: 80%;
 }
 
 
@@ -290,6 +287,10 @@ width: 80%;
 .fondo-modal.activo {
     display: flex;
 }
+
+
+/* ------------------------ LOGIN | REGISTRO ------------------------*/
+
 
 /* Contenedor principal del login */
 .contenedorPadre {

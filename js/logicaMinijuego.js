@@ -387,15 +387,20 @@ function evaluarFinPartida(puntosAzul, puntosRojo) {
         tituloHTML = "EMPATE";
     }
 
-    // 3. Creamos el contenedor del cartel de forma dinámica
+        // 3. Creamos el contenedor del cartel de forma dinámica con tres botones
     const cartel = document.createElement("div");
     cartel.className = "cartel-final";
     
     cartel.innerHTML = `
         <h1 class="${claseResultado}">${tituloHTML}</h1>
         <p>${subtitulo}</p>
-        <button class="btn-reiniciar" onclick="window.location.reload()">Jugar otra vez</button>
+        <div class="contenedor-botones-final">
+            <button class="btn-final btn-volver" onclick="window.location.href='index.html'">Inicio</button>
+            <button class="btn-reiniciar" onclick="window.location.reload()">Jugar otra vez</button>
+            <button class="btn-final btn-ranking" onclick="window.location.href='ranking.html'">Ranking</button>
+        </div>
     `;
+
 
     // 4. Lo inyectamos al cuerpo de la página
     document.body.appendChild(cartel);

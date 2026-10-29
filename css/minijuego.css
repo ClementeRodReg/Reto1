@@ -406,7 +406,7 @@ h2{
 .resultado-empate { color: #d3d3d3; text-shadow: 0 0 15px rgba(211, 211, 211, 0.6); } /* Gris */
 
 .cartel-final p {
-    font-size: 24px;
+    font-size: 28px;
     color: #a0a5d0;
     margin-bottom: 20px;
 }
@@ -428,6 +428,44 @@ h2{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transform: scale(1.05);
 }
+
+/* Contenedor para alinear los tres botones en horizontal */
+.contenedor-botones-final {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+/* Estilo base unificado para los nuevos botones laterales */
+.btn-final {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #cccccc;
+    color: #cccccc;
+    padding: 10px 30px;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+/* Efectos visuales al pasar el ratón (Hover) según su función */
+.btn-volver:hover {
+    background-color: #4a5568;
+    border-color: #cbd5e0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.btn-ranking:hover {
+    background-color: #b7791f;
+    border-color: #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    transform: scale(1.05);
+    color: #ffffff;
+}
+
 
 /* --- EFECTO VOLTEO 3D TRIPLE TRIAD --- */
 

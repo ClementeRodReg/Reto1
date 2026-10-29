@@ -1,0 +1,321 @@
+@font-face {
+    font-family: FFVIII;
+    src: url(../fonts/OPTIEngeEtienne.woff2);
+}
+
+* {
+   font-family: FFVIII, sans-serif;
+   color: #eeeeee;
+   box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Cambiado de 'center' a 'flex-start' para desbloquear la parte superior */
+    min-height: 100vh;
+}
+
+/* Contenedor vertical para apilar el Header y el Formulario */
+.contenedor-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 5vh; /* NUEVO: Sube todo el bloque. Puedes bajarlo a 8vh o subirlo a 2vh según tu gusto */
+}
+
+header {
+    font-size: 110px;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de la letra: debe ser relative para que el GIF se alinee con ella */
+.i-animada {
+    position: relative;
+    display: inline-block;
+}
+
+/* El GIF animado que hará de punto */
+.i-animada::after {
+    content: "";
+    position: absolute;
+    width: 50px;  
+    height: 50px;
+    background-image: url('../img/crystal-spinning.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 20px;  
+    left: 48%;
+    transform: translateX(-53%);
+}
+
+/* NUEVO: Cuadro con el degradado azul oficial de FF7 y su mítico borde doble */
+.cuadro-ff7 {
+    width: 100%;
+    background: linear-gradient(180deg, #000066 0%, #000033 40%, #000011 100%);
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 3px #666666, 0 10px 20px rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+/* Estructura interna del fieldset */
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.filas {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+legend {
+    font-size: 45px;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
+    padding: 0 15px;      /* Espaciado lateral para que el borde blanco no toque las letras */
+    margin-left: 10px;    /* Lo desplaza un poco a la derecha del borde, estilo clásico */
+}
+
+/* Alineación en rejilla para que los inputs queden perfectamente alineados verticalmente */
+.campo-formulario {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    align-items: center;
+    gap: 20px;
+}
+
+label {
+    font-size: 28px;
+    text-align: right;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+/* Estilización de las cajas de texto al estilo menú RPG */
+input {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #5d64a4;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 22px;
+    padding: 8px 12px;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s ease;
+}
+
+input:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 8px rgba(58, 134, 255, 0.4);
+}
+
+/* Alinea ambos botones en horizontal empujándolos a la derecha inferior del menú */
+.contenedor-botones-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px; /* Separación entre el botón Volver y Actualizar */
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* Estilo específico para el botón de Volver (más oscuro para no competir visualmente) */
+.btn-secundario {
+    border-color: #5d64a4 !important;
+    color: #a0a5d0 !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.btn-secundario:hover {
+    background: rgba(74, 85, 104, 0.3) !important;
+    border-color: #cbd5e0 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Botón con estilización retro mejorada */
+.boton {
+    background: rgba(0, 0, 0, 0.6); 
+    border: 2px solid #cccccc;
+    color: #cccccc;
+    font-family: FFVIII, sans-serif;
+    font-size: 25px;
+    padding: 10px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.boton:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1.03);
+}
+
+/* --- ALINEACIÓN INTERNA DEL FORMULARIO (AVATAR A LA IZQUIERDA) --- */
+
+/* Divide el interior del formulario en 2 columnas */
+.cuerpo-formulario-rpg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.seccion-avatar-interna {
+    flex: 0 0 140px; /* Ancho fijo para el avatar dentro del cuadro */
+    display: flex;
+    justify-content: center;
+}
+
+.seccion-inputs-interna {
+    flex: 1; /* Los inputs toman el resto del espacio */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* El Marco que contiene la foto del héroe */
+.marco-avatar {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(24, 25, 58, 0.4) 100%);
+    border: 2px solid #5d64a4;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.marco-avatar img {
+    width: 200px;
+    height: 200px;
+    object-fit: fill;
+    transition: transform 0.2s ease;
+}
+
+.marco-avatar:hover {
+    border-color: #3a86ff;
+    box-shadow: 0 0 15px rgba(58, 134, 255, 0.5);
+}
+
+.marco-avatar:hover img {
+    transform: scale(1.05);
+}
+
+.indicador-cambio {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    font-size: 12px;
+    text-align: center;
+    color: #ffd700;
+    padding: 3px 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    letter-spacing: 1px;
+}
+
+.marco-avatar:hover .indicador-cambio {
+    opacity: 1;
+}
+
+/* --- REPARACIÓN DE LA VENTANA MODAL (FLOTANTE ABSOLUTA) --- */
+
+.modal-ff7 {
+    display: none; 
+    position: fixed; /* Forzamos a que flote sobre toda la ventana del navegador */
+    z-index: 9999;   /* Por encima de cualquier formulario o título */
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85); /* Oscurece el fondo */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contenido-modal-ff7 {
+    width: 100%;
+    max-width: 750px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+}
+
+.cabecera-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #5d64a4;
+    padding-bottom: 10px;
+}
+
+.cabecera-modal h2 {
+    font-size: 30px;
+    margin: 0;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+.btn-cerrar-retro {
+    background: transparent;
+    border: none;
+    color: #ff006e;
+    font-size: 28px;
+    cursor: pointer;
+    font-family: FFVIII, sans-serif;
+}
+
+.btn-cerrar-retro:hover {
+    color: #ffffff;
+}
+
+.grid-galeria-modal {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Miniaturas un poco más grandes */
+    gap: 15px;
+    overflow-y: auto; 
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    border: 1px solid rgba(254, 254, 254, 0.1);
+}
+
+.opcion-avatar-galeria {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 2px solid #5d64a4;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.opcion-avatar-galeria:hover {
+    border-color: #ffd700;
+    transform: scale(1.08);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
