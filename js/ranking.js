@@ -72,20 +72,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonResetear = document.getElementById("botonResetear");
   if (botonResetear) {
     const botsOcultosActualmente = localStorage.getItem("ranking_ocultar_bots") === "true";
-    botonResetear.textContent = botsOcultosActualmente ? "Mostrar Pega" : "Quitar Pega";
+    botonResetear.textContent = botsOcultosActualmente ? "Resurrección en masa" : "Resetear ranking";
 
     botonResetear.addEventListener("click", () => {
       const estadoActual = localStorage.getItem("ranking_ocultar_bots") === "true";
       
       if (!estadoActual) {
-        if (confirm("¿Deseas ocultar todos los usuarios de pega del ranking y ver solo a los reales?")) {
+        if (confirm("¿Deseas invocar a odin para deshacerte de los indignos?")) {
           localStorage.setItem("ranking_ocultar_bots", "true");
-          botonResetear.textContent = "Mostrar Pega";
+          botonResetear.textContent = "Resurrección en masa";
           rellenarTabla();
         }
       } else {
         localStorage.setItem("ranking_ocultar_bots", "false");
-        botonResetear.textContent = "Quitar Pega";
+        botonResetear.textContent = "Resetear ranking";
         rellenarTabla();
       }
     });
